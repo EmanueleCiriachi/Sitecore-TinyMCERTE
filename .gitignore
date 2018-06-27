@@ -1,0 +1,14 @@
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+.vs/*
+obj/
+bin/
+Release/
+packages/*
+!packages/repositories.config
+*.pubxml
+*.pubxml.user
+/dotPeek/
