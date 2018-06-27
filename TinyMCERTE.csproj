@@ -85,59 +85,6 @@
     <Content Include="App_Config\Include\TinyEditor.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.10.0.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.10.2.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.6.4.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-splitter\jquery-splitter.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-ui.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.dialogextended-2.0.3.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.mousewheel.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.noconflict.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.noconflict.strict.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.scextensions.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.tablesorter.extras-0.1.22.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.tmpl.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.watermark.custom.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.watermark.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\jquery-ui-1.10.3.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\animated-overlay.gif" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_222222_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_454545_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_888888_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\jquery-ui-1.10.3.min.css" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\jquery-ui.min.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_222222_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_454545_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_888888_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\jquery-ui.css" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\jquery.ui.theme.css" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jScrollPane\jquery.jscrollpane.css" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\jScrollPane\jquery.jscrollpane.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\PipelinesProfiling\jquery.qtip.custom.pipelines.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\tablesorter.js" />
-    <Content Include="sitecore\shell\Controls\Lib\jQuery\tablesorter.scrollable.js" />
-    <Content Include="sitecore\shell\Controls\Lib\Prototype\prototype.js" />
     <Content Include="sitecore\shell\Controls\Lib\tinymce\jquery.tinymce.min.js" />
     <Content Include="sitecore\shell\Controls\Lib\tinymce\license.txt" />
     <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\advlist\plugin.js" />
@@ -319,6 +266,10 @@
     <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.mobile.min.css.map" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
