@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<control xmlns:def="Definition" xmlns="http://schemas.sitecore.net/Visual-Studio-Intellisense">
+   <TinyMCE.InsertImage>
+      <FormDialog Header="Insert Media Item" Text="Navigate to or search for the image or media file that you want to insert." OKButton="Insert">
+
+        <Stylesheet Src="MediaBrowser.css" DeviceDependant="true" />
+        <link href="/sitecore/shell/Controls/TinyMCE Editor/style/tinymceeditor.css" rel="stylesheet" type="text/css" />
+        <script src="/sitecore/shell/controls/lib/jquery/jquery-1.10.2.min.js" type="text/javascript">.</script>
+        <script type="text/javascript">
+          if (typeof(window.$sc) == "undefined") window.$sc = jQuery.noConflict();
+        </script>
+        <script src="/sitecore/shell/controls/lib/tinymce/tinymce.js" type="text/javascript">.</script>
+        <script Type="text/javascript" Language="javascript" Src="/sitecore/shell/Controls/TinyMCE Editor/InsertImage/InsertImage.js">.</script>
+
+        <CodeBeside Type="TinyMCERTE.Commands.InsertTinyMCEImageForm,TinyMCERTE"/>
+
+        <DataContext ID="DataContext" Root="{3D6658D8-A0BF-4E75-B3E2-D050FABCF4E1}"/>
+
+        <Tabstrip class="scInsertImageTabs" ID="Tabs" Width="100%" Height="100%">
+            <Tab ID="MediaLibraryTab" Header="Media Library" Height="100%">
+              <GridPanel Width="100%" Height="100%" Columns="3" GridPanel.Height="100%" Class="scMediaGridPanel">
+                <Border Class="scMediaTreeBorder" GridPanel.Height="100%" GridPanel.Width="50%">
+                  <Scrollbox Class="scScrollbox scMediaTree">
+                    <TreeviewEx ID="Treeview" DataContext="DataContext" Click="SelectTreeNode" ShowRoot="true" ContextMenu='Treeview.GetContextMenu("contextmenu")' />
+                  </Scrollbox>
+                </Border>
+                <VSplitter ID="InsertMediaLeft" GridPanel.Width="4" Target="left" />
+                <Scrollbox ID="Listview" Width="100%" Height="100%" GridPanel.Height="100%" GridPanel.Width="100%" GridPanel.VAlign="top" />
+              </GridPanel>
+            </Tab>
+
+           <SearchTab Mode="MediaBrowser" Header="Search" Height="100%"/>
+        </Tabstrip>
+
+        <Border class="scInsertImageFileName">
+            <GridPanel class="scFormTable" Columns="2">
+              <Literal Text="Name:"/>
+
+              <Edit ID="Filename" />
+            </GridPanel>
+        </Border>
+
+        <Border def:placeholder="Buttons">
+            <Button ID="Upload" Header="Upload" Click="media:upload(edit=1,load=1)"/>
+            <Button ID="EditButton" Header="Edit" Click="Edit" />
+        </Border>
+
+      </FormDialog>
+   </TinyMCE.InsertImage>
+</control>

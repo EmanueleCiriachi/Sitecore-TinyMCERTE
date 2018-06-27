@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0D2069F-752A-4264-8FCC-5B69C2DA2F31}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TinyMCERTE</RootNamespace>
+    <AssemblyName>TinyMCERTE</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live-ContentManagement|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Live-ContentDelivery|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT-ContentManagement|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT-ContentDelivery|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Sitecore.Client">
+      <HintPath>..\libraries\Sitecore.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ExperienceEditor">
+      <HintPath>..\libraries\Sitecore.ExperienceEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\libraries\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Shell.MarketingAutomation">
+      <HintPath>..\libraries\Sitecore.Shell.MarketingAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\InsertImage.cs" />
+    <Compile Include="Commands\InsertImageForm.cs" />
+    <Compile Include="Commands\InsertLink.cs" />
+    <Compile Include="Commands\InsertLinkForm.cs" />
+    <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="TinyEditor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TinyEditorConfiguration.cs" />
+    <Compile Include="TinyEditorConfigurationResult.cs" />
+    <Compile Include="TinyEditorPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TinyMCEEditorUrl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\TinyEditor.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.10.0.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.10.2.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-1.6.4.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-splitter\jquery-splitter.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery-ui.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.dialogextended-2.0.3.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.mousewheel.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.noconflict.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.noconflict.strict.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.scextensions.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.tablesorter.extras-0.1.22.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.tmpl.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.watermark.custom.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jquery.watermark.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\jquery-ui-1.10.3.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\animated-overlay.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.10.3\smoothness\jquery-ui-1.10.3.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\jquery-ui.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\jquery-ui.css" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jQueryUI\1.9.2\smoothness\jquery.ui.theme.css" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jScrollPane\jquery.jscrollpane.css" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\jScrollPane\jquery.jscrollpane.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\PipelinesProfiling\jquery.qtip.custom.pipelines.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\tablesorter.js" />
+    <Content Include="sitecore\shell\Controls\Lib\jQuery\tablesorter.scrollable.js" />
+    <Content Include="sitecore\shell\Controls\Lib\Prototype\prototype.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\jquery.tinymce.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\license.txt" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\bbcode\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\code\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\colorpicker\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\css\dialog.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\buttons.png" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\icons.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\items.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\menu_arrow.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\menu_check.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\progress.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\img\tabs.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\tiny_mce_popup.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\utils\editable_selects.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\utils\form_utils.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\utils\mctabs.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\compat3x\utils\validate.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\contextmenu\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\example\dialog.html" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\fullpage\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\help\img\logo.png" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\help\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\hr\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\imagetools\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\image\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\legacyoutput\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\link\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\lists\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\media\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\noneditable\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\paste\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\preview\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\print\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\save\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\spellchecker\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\tabfocus\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\table\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\template\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\textcolor\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\textpattern\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\toc\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\content.mobile.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.dev.svg" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.dev.svg" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.mobile.min.css" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\inlite\theme.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\mobile\theme.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\modern\theme.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\themes\modern\theme.min.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\tinymce.js" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\tinymce.min.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\BrowserDetection.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\Default.aspx" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.aspx" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreImage.png" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreLink.png" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\InsertImage\InsertImage.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\InsertImage\InsertImage.xml" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\InsertLink\InsertLink.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\InsertLink\InsertLink.xml" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\jquery.modal.min.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\Preview.aspx" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\RichText Commands.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\RTEfixes.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\SitecoreTinyMCEButtons.js" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\style\jquery.modal.min.css" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\style\tinymceeditor.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sitecore\shell\Controls\Lib\tinymce\langs\readme.md" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\readme.md" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.min.css.map" />
+    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.mobile.min.css.map" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
