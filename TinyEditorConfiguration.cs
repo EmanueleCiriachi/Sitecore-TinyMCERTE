@@ -18,8 +18,6 @@ namespace TinyMCERTE {
     public class TinyEditorConfiguration {
         /// <summary>The profile.</summary>
         private readonly Sitecore.Data.Items.Item profile;
-        /// <summary>The language.</summary>
-        private string language;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Sitecore.Shell.Controls.RichTextEditor.TinyEditorConfiguration" /> class.

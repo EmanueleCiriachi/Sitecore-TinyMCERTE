@@ -34,3 +34,14 @@ C:\Ecosystem\emanuele.ciriachi\TinyMCERTE\bin\Debug\Sitecore.ContentSearch.dll
 C:\Ecosystem\emanuele.ciriachi\TinyMCERTE\bin\Debug\Sitecore.ContentSearch.Linq.dll
 C:\Ecosystem\emanuele.ciriachi\TinyMCERTE\bin\Debug\Sitecore.Client.xml
 C:\Ecosystem\emanuele.ciriachi\TinyMCERTE\bin\Debug\Sitecore.ExperienceEditor.dll
+C:\Projects\TinyMCERTE\obj\Debug\TinyMCERTE.csprojResolveAssemblyReference.cache
+C:\Projects\TinyMCERTE\obj\Debug\TinyMCERTE.dll
+C:\Projects\TinyMCERTE\obj\Debug\TinyMCERTE.pdb
+C:\Projects\TinyMCERTE\bin\Debug\TinyMCERTE.dll
+C:\Projects\TinyMCERTE\bin\Debug\TinyMCERTE.pdb
+C:\Projects\TinyMCERTE\bin\Debug\Sitecore.Client.dll
+C:\Projects\TinyMCERTE\bin\Debug\Sitecore.ExperienceEditor.dll
+C:\Projects\TinyMCERTE\bin\Debug\Sitecore.Kernel.dll
+C:\Projects\TinyMCERTE\bin\Debug\Sitecore.Shell.MarketingAutomation.dll
+C:\Projects\TinyMCERTE\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\TinyMCERTE\bin\Debug\HtmlAgilityPack.dll

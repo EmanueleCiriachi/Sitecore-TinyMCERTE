@@ -42,18 +42,21 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>bin\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Client">
-      <HintPath>..\libraries\Sitecore.Client.dll</HintPath>
+      <HintPath>bin\Sitecore.Client.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.ExperienceEditor">
-      <HintPath>..\libraries\Sitecore.ExperienceEditor.dll</HintPath>
+      <HintPath>bin\Sitecore.ExperienceEditor.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\libraries\Sitecore.Kernel.dll</HintPath>
+      <HintPath>bin\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Shell.MarketingAutomation">
-      <HintPath>..\libraries\Sitecore.Shell.MarketingAutomation.dll</HintPath>
+      <HintPath>bin\Sitecore.Shell.MarketingAutomation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -80,6 +83,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="TinyMCEEditorUrl.cs" />
+    <Compile Include="TinyMCERTEType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\TinyEditor.config">
@@ -253,17 +257,22 @@
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\style\tinymceeditor.css" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="sitecore\shell\Controls\Lib\tinymce\langs\readme.md" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\readme.md" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.eot" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.ttf" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.woff" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.min.css.map" />
-    <None Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.mobile.min.css.map" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\langs\readme.md" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\readme.md" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.min.css.map" />
+    <Content Include="sitecore\shell\Controls\Lib\tinymce\skins\lightgray\skin.mobile.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\TinyMce.FieldType.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
