@@ -45,3 +45,16 @@ C:\Projects\TinyMCERTE\bin\Debug\Sitecore.Kernel.dll
 C:\Projects\TinyMCERTE\bin\Debug\Sitecore.Shell.MarketingAutomation.dll
 C:\Projects\TinyMCERTE\bin\Debug\Newtonsoft.Json.dll
 C:\Projects\TinyMCERTE\bin\Debug\HtmlAgilityPack.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\TinyMCERTE.dll.config
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\TinyMCERTE.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\TinyMCERTE.pdb
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\HtmlAgilityPack.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\Sitecore.Client.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\Sitecore.ExperienceEditor.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\Sitecore.Kernel.dll
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\HtmlAgilityPack.pdb
+D:\repo\Sitecore-TinyMCERTE\bin\Debug\HtmlAgilityPack.xml
+D:\repo\Sitecore-TinyMCERTE\obj\Debug\TinyMCERTE.csproj.CoreCompileInputs.cache
+D:\repo\Sitecore-TinyMCERTE\obj\Debug\TinyMCERTE.csproj.CopyComplete
+D:\repo\Sitecore-TinyMCERTE\obj\Debug\TinyMCERTE.dll
+D:\repo\Sitecore-TinyMCERTE\obj\Debug\TinyMCERTE.pdb

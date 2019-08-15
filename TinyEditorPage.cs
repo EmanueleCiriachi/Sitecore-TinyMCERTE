@@ -187,10 +187,10 @@ namespace TinyMCERTE {
 
         /// <summary>Registers the media prefixes.</summary>
         private void RegisterMediaPrefixes() {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (string mediaPrefix in MediaManager.Provider.Config.MediaPrefixes)
-                stringBuilder.Append("|" + mediaPrefix.Replace("\\", "\\\\").Replace("/", "\\/"));
-            this.ClientScript.RegisterClientScriptBlock(this.GetType(), "mediaPrefixes", "var prefixes = '" + (object)stringBuilder + "';", true);
+                StringBuilder stringBuilder = new StringBuilder();
+                foreach (string mediaPrefix in MediaManager.Config.MediaPrefixes)
+                    stringBuilder.Append("|" + mediaPrefix.Replace("\\", "\\\\").Replace("/", "\\/"));
+                this.ClientScript.RegisterClientScriptBlock(this.GetType(), "mediaPrefixes", "var prefixes = '" + (object)stringBuilder + "';", true);
         }
 
         /// <summary>Renders the script constants.</summary>

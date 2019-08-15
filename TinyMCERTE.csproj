@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TinyMCERTE</RootNamespace>
     <AssemblyName>TinyMCERTE</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,21 +43,17 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>bin\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.11.12.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>packages\HtmlAgilityPack.1.11.12\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Client">
-      <HintPath>bin\Sitecore.Client.dll</HintPath>
+    <Reference Include="Sitecore.Client, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Sitecore.Client.NoReferences.9.0.180604\lib\NET462\Sitecore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ExperienceEditor">
-      <HintPath>bin\Sitecore.ExperienceEditor.dll</HintPath>
+    <Reference Include="Sitecore.ExperienceEditor, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Sitecore.ExperienceEditor.NoReferences.9.0.180604\lib\NET462\Sitecore.ExperienceEditor.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Sitecore.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Shell.MarketingAutomation">
-      <HintPath>bin\Sitecore.Shell.MarketingAutomation.dll</HintPath>
+    <Reference Include="Sitecore.Kernel, Version=11.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Sitecore.Kernel.NoReferences.9.0.180604\lib\NET462\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -273,6 +270,10 @@
     <Content Include="App_Config\Include\TinyMce.FieldType.config">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
