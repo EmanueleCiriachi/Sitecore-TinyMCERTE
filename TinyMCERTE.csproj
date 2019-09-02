@@ -42,21 +42,21 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>bin\HtmlAgilityPack.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>extlib\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Client">
-      <HintPath>bin\Sitecore.Client.dll</HintPath>
+    <Reference Include="Sitecore.Client, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>extlib\Sitecore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.ExperienceEditor">
-      <HintPath>bin\Sitecore.ExperienceEditor.dll</HintPath>
+    <Reference Include="Sitecore.ExperienceEditor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>extlib\Sitecore.ExperienceEditor.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=8.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Sitecore.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Sitecore.Shell.MarketingAutomation">
-      <HintPath>bin\Sitecore.Shell.MarketingAutomation.dll</HintPath>
+      <HintPath>extlib\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
