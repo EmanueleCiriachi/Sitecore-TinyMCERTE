@@ -1,18 +1,5 @@
-﻿using Sitecore;
-using Sitecore.Configuration;
-using Sitecore.Data.Items;
-using Sitecore.Data.Managers;
-using Sitecore.Diagnostics;
-using Sitecore.IO;
+﻿using Sitecore.Diagnostics;
 using Sitecore.Reflection;
-using Sitecore.Resources;
-using Sitecore.Security.Authentication;
-using Sitecore.Shell.Controls.RichTextEditor;
-using Sitecore.Web.UI;
-using Sitecore.Xml;
-using System;
-using System.Globalization;
-using System.Xml;
 
 namespace TinyMCERTE {
     public class TinyEditorConfiguration {

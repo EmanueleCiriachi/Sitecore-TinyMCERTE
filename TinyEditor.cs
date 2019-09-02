@@ -1,6 +1,5 @@
 ﻿using Sitecore;
 using Sitecore.Configuration;
-using Sitecore.Data;
 using Sitecore.Diagnostics;
 using Sitecore.Globalization;
 using Sitecore.Text;
@@ -10,7 +9,6 @@ using Sitecore.Web.UI.Sheer;
 using Sitecore.WordOCX;
 using System;
 using System.Web;
-using System.Web.UI.HtmlControls;
 
 namespace TinyMCERTE
 {

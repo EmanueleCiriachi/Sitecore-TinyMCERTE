@@ -5,20 +5,12 @@
 // Assembly location: C:\Ecosystem\emanuele.ciriachi\BlueRubicon.Web\bin\Sitecore.Client.dll
 
 using Sitecore;
-using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Globalization;
-using Sitecore.IO;
 using Sitecore.Links;
 using Sitecore.Resources.Media;
 using Sitecore.Shell.Controls.RichTextEditor.InsertLink;
-using Sitecore.Shell.Framework;
-using Sitecore.Web;
-using Sitecore.Web.UI.HtmlControls;
-using Sitecore.Web.UI.Pages;
 using Sitecore.Web.UI.Sheer;
-using Sitecore.Web.UI.WebControls;
 using System;
 
 namespace TinyMCERTE.Commands {

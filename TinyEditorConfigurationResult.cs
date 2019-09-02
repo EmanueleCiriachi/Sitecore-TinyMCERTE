@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TinyMCERTE {
+﻿namespace TinyMCERTE {
     public class TinyEditorConfigurationResult {
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Sitecore.Shell.Controls.RichTextEditor.EditorConfigurationResult" /> class.

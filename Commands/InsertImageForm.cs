@@ -7,11 +7,7 @@ using Sitecore.Shell.Controls.RichTextEditor.InsertImage;
 using Sitecore.Web.UI.HtmlControls;
 using Sitecore.Web.UI.Sheer;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
 namespace TinyMCERTE.Commands {

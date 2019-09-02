@@ -1,22 +1,10 @@
-﻿using HtmlAgilityPack;
-using Sitecore.Data.Fields;
-using Sitecore.Configuration;
+﻿using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using Sitecore.Layouts;
-using Sitecore.Links;
-using Sitecore.Resources.Media;
-using Sitecore.Text;
-using Sitecore.Web;
 using Sitecore.Web.UI.WebControls.Ribbons;
-using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
-using Sitecore.Data;
-using Sitecore.Web.UI.HtmlControls.Data;
 using Sitecore;
 
 namespace TinyMCERTE {

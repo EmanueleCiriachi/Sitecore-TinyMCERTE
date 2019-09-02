@@ -188,7 +188,8 @@ namespace TinyMCERTE {
         /// <summary>Registers the media prefixes.</summary>
         private void RegisterMediaPrefixes() {
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (string mediaPrefix in MediaManager.Provider.Config.MediaPrefixes)
+            var mediaPrefixes = MediaManager.Config.MediaPrefixes;
+            foreach (string mediaPrefix in mediaPrefixes)
                 stringBuilder.Append("|" + mediaPrefix.Replace("\\", "\\\\").Replace("/", "\\/"));
             this.ClientScript.RegisterClientScriptBlock(this.GetType(), "mediaPrefixes", "var prefixes = '" + (object)stringBuilder + "';", true);
         }

@@ -2,9 +2,7 @@
 using Sitecore.Shell.Applications.WebEdit.Commands;
 using Sitecore.Shell.Framework.Commands;
 using Sitecore.Text;
-using Sitecore.Web.UI.Pages;
 using Sitecore.Web.UI.Sheer;
-using System;
 
 namespace TinyMCERTE.Commands {
     public class InsertImage : WebEditCommand {
