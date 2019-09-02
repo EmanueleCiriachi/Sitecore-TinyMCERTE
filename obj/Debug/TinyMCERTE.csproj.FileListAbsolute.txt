@@ -56,3 +56,4 @@ C:\Projects\TinyMCERTE\TinyMCERTE\bin\Debug\Sitecore.Kernel.dll
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.csproj.CopyComplete
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.dll
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.pdb
+C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.csprojAssemblyReference.cache
