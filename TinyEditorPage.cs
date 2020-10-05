@@ -112,15 +112,15 @@ namespace TinyMCERTE {
                     string queryString = WebUtil.GetQueryString("so", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
                     Assert.IsNotNull((object)queryString, "source");
 
-                    Database database = Sitecore.Context.Database;
-                    Assert.IsNotNull((object)database, "database");
-                    Sitecore.Data.Items.Item profile1 = database.GetItem(queryString);
+                    Database coreDB = Sitecore.Data.Database.GetDatabase("core");
+                    Assert.IsNotNull((object)coreDB, "database");
+                    Sitecore.Data.Items.Item profile1 = coreDB.GetItem(queryString);
 
                     if (profile1 != null) {
                         TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile1);
                         configurationResult = editorConfiguration.Apply();
                     } else {
-                        Sitecore.Data.Items.Item profile2 = database.GetItem(Settings.HtmlEditor.DefaultProfile);
+                        Sitecore.Data.Items.Item profile2 = coreDB.GetItem(Settings.HtmlEditor.DefaultProfile);
                         if (profile2 != null)
                         {
                             TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile2);
