@@ -82,6 +82,7 @@
     <Compile Include="Commands\InsertLink.cs" />
     <Compile Include="Commands\InsertLinkForm.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="RTETinyEditor.cs" />
     <Compile Include="TinyEditor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TinyEditorConfiguration.cs" />
@@ -247,7 +248,9 @@
     <Content Include="sitecore\shell\Controls\Lib\tinymce\tinymce.min.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\BrowserDetection.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\Default.aspx" />
-    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.aspx" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreImage.png" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreLink.png" />
