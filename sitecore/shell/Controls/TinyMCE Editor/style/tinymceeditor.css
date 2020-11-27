@@ -42,3 +42,7 @@
 .scFlexColumnContainer .scFormDialogContent .scStretchAbsolute.scDialogContentContainer {
 	background: #fff;
 }
+
+.tox .tox-editor-container {
+    z-index: 0;
+}
