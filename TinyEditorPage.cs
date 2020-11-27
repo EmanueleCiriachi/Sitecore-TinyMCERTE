@@ -109,7 +109,11 @@ namespace TinyMCERTE {
             TinyEditorConfigurationResult configurationResult = new TinyEditorConfigurationResult();
             using (new UserSwitcher(user)) {
                 using (new SecurityEnabler()) {
-                    string queryString = WebUtil.GetQueryString("so", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
+                    //Compatibility with Sitecore builtin Telerik RTE:
+                    //"so" - default parameter left for RTE
+                    //"so_mce" - new parameter to setup profile for so_mce
+                    //if you need to setup profile, you need to type &so_mce=/sitecore/system/Settings/TinyMCE Editor Profiles/TinyMCE Full Classic Profile
+                    string queryString = WebUtil.GetQueryString("so_mce", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
 
                     Assert.IsNotNull((object)queryString, "source");
 
