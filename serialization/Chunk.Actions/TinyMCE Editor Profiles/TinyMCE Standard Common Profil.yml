@@ -1,0 +1,23 @@
+﻿---
+ID: "25374cae-07fe-404e-bcde-ed5fd0367aaa"
+Parent: "fe5dee3b-86e4-473d-b516-3172551e24d8"
+Template: "8a834537-cf42-4f59-8422-0b5a28a02421"
+Path: /sitecore/system/Settings/TinyMCE Editor Profiles/TinyMCE Standard Common Profile
+DB: core
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180524T144513Z
+    - ID: "3126fbc5-f7d6-4693-96c0-567769329824"
+      Hint: Editor plugins
+      Value: |
+        advlist autolink lists link image charmap print preview anchor textcolor sitecoretinymcebuttons,
+        searchreplace visualblocks code fullscreen,
+        insertdatetime media table contextmenu paste code help wordcount importcss
+    - ID: "6a35fbcd-45e0-4629-be0b-a88adf142379"
+      Hint: Editor Toolbar
+      Value: insert | insertsitecorelink insertsitecoreimage | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help | fullscreen code

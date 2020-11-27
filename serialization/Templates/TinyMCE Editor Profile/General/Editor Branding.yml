@@ -1,0 +1,25 @@
+﻿---
+ID: "df49a151-5e77-44eb-a0ed-d51c507cafd0"
+Parent: "401e1020-514c-41d2-8fbc-00ed301e1a1f"
+Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
+Path: /sitecore/templates/User Defined/Data/TinyMCE Editor Profile/General/Editor Branding
+DB: core
+SharedFields:
+- ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
+  Hint: Type
+  Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 500
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180523T164630Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        eco\emanuele.ciriachi@teneobluerubicon.com
