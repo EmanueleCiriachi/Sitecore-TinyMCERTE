@@ -20,7 +20,7 @@
   </script>
   <script src="/sitecore/shell/controls/lib/prototype/prototype.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/EditorPage.js" type="text/javascript"></script>
-  <script src="/sitecore/shell/controls/lib/tinymce/tinymce.js" type="text/javascript"></script>
+  <script src="/sitecore/shell/controls/lib/node_modules/tinymce/tinymce.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/SitecoreTinyMCEButtons.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/jquery.modal.min.js" type="text/javascript"></script>
 

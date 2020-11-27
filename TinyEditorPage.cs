@@ -110,6 +110,7 @@ namespace TinyMCERTE {
             using (new UserSwitcher(user)) {
                 using (new SecurityEnabler()) {
                     string queryString = WebUtil.GetQueryString("so", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
+
                     Assert.IsNotNull((object)queryString, "source");
 
                     Database coreDB = Sitecore.Data.Database.GetDatabase("core");

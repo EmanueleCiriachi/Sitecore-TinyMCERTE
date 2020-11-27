@@ -112,19 +112,19 @@
 
 		var register = function (editor) {
 			var mceeditor = editor;
-			editor.addButton('insertsitecorelink', {
+            editor.ui.registry.addButton('insertsitecorelink', {
 				type: 'button',
 				title: 'Insert Sitecore Link',
 				icon: "sitecore-button InsertSitecoreLink",
-				onclick: function () {
+				onAction: function () {
 					InsertSitecoreLink(mceeditor);
 				}
 			});
-			editor.addButton('insertsitecoreimage', {
+            editor.ui.registry.addButton('insertsitecoreimage', {
 				type: 'button',
 				title: 'Insert Sitecore Image',
 				icon: "sitecore-button InsertSitecoreMedia",
-				onclick: function () {
+				onAction: function () {
 					InsertSitecoreImage(mceeditor);
 				}
 			});
