@@ -172,7 +172,7 @@ namespace TinyMCERTE {
             if (args.Name == "editorpage:accept") {
                 this.OnAccept();
             } else {
-                if (!(args.Name == "editorpage:reject"))
+                if (args.Name != "editorpage:reject")
                     return;
                 this.OnReject();
             }

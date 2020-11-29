@@ -104,7 +104,7 @@ namespace TinyMCERTE
         public override void HandleMessage(Message message) {
             Assert.ArgumentNotNull((object)message, ExtensionMethods.nameof(() => message));
             base.HandleMessage(message);
-            if (!(message["id"] == this.ID))
+            if (message["id"] != this.ID)
                 return;
             switch (message.Name) {
                 case "tinyrte:edit":
@@ -120,7 +120,7 @@ namespace TinyMCERTE
             if (this.Disabled)
                 return;
             if (args.IsPostBack) {
-                if (args.Result == null || !(args.Result != "undefined"))
+                if (args.Result == null || args.Result == "undefined")
                     return;
                 this.UpdateHtml(args);
             } else {
@@ -155,7 +155,7 @@ namespace TinyMCERTE
         /// <returns>The load post data.</returns>
         protected override bool LoadPostData(string value) {
             Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
-            if (!(value != this.Value))
+            if (value == this.Value)
                 return false;
             this.Value = value;
             return true;
