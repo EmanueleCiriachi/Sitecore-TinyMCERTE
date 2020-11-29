@@ -325,7 +325,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
-    <None Include="Sitecore Package\TinyMCE for Sitecore - Core Items-1.0.zip" />
     <None Include="sitecore\shell\Controls\Lib\node_modules\tinymce\bower.json" />
     <None Include="sitecore\shell\Controls\Lib\node_modules\tinymce\composer.json" />
     <None Include="sitecore\shell\Controls\Lib\node_modules\tinymce\package.json" />
