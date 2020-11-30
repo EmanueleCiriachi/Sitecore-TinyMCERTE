@@ -38,6 +38,7 @@
     <asp:HiddenField ID="EditorInitCallback" runat="server" />
     <asp:HiddenField ID="EditorMenubar" runat="server" />
     <asp:HiddenField ID="EditorBranding" runat="server" />
+    <asp:HiddenField ID="EditorStyleFormats" runat="server" />
     <asp:HiddenField ID="CSSPath" runat="server" />
 
     <input type="hidden" id="EditorValue" />

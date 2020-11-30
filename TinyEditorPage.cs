@@ -65,6 +65,8 @@ namespace TinyMCERTE {
         protected HiddenField EditorMenubar;
         /// <summary>The content of the "branding" configuration option in TinyMCE.</summary>
         protected HiddenField EditorBranding;
+        /// <summary>The content of the "style formats" configuration option in TinyMCE.</summary>
+        protected HiddenField EditorStyleFormats;
         /// <summary>The CSS file to apply to the editor's content</summary>
         protected HiddenField CSSPath;
         
@@ -141,6 +143,7 @@ namespace TinyMCERTE {
             this.EditorInitCallback.Value = configurationResult.EditorInitCallback;
             this.EditorMenubar.Value = configurationResult.EditorMenubar;
             this.EditorBranding.Value = configurationResult.EditorBranding;
+            this.EditorStyleFormats.Value = configurationResult.EditorStyleFormats;
             this.CSSPath.Value = Sitecore.Configuration.Settings.GetSetting("WebStylesheet");
 
             this.RenderScriptConstants();
