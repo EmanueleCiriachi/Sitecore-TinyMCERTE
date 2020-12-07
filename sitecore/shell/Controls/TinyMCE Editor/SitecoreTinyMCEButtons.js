@@ -115,7 +115,7 @@
             editor.ui.registry.addButton('insertsitecorelink', {
 				type: 'button',
 				title: 'Insert Sitecore Link',
-				icon: "sitecore-button InsertSitecoreLink",
+				icon: "link",
 				onAction: function () {
 					InsertSitecoreLink(mceeditor);
 				}
@@ -123,7 +123,7 @@
             editor.ui.registry.addButton('insertsitecoreimage', {
 				type: 'button',
 				title: 'Insert Sitecore Image',
-				icon: "sitecore-button InsertSitecoreMedia",
+				icon: "image",
 				onAction: function () {
 					InsertSitecoreImage(mceeditor);
 				}
