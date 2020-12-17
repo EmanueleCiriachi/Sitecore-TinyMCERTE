@@ -6,6 +6,7 @@
 <head runat="server">
   <title>Sitecore</title>
   <link href="/sitecore/shell/Themes/Standard/Default/Content Manager.css" rel="stylesheet" type="text/css" />
+  <link href="/sitecore/shell/Themes/Standard/Default/Dialogs.css" rel="stylesheet" type="text/css" />
   <link href="/sitecore/shell/Controls/TinyMCE Editor/style/tinymceeditor.css" rel="stylesheet" type="text/css" />
   <style type="text/css">
     textarea {

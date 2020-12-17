@@ -141,7 +141,7 @@ namespace TinyMCERTE
                 UrlString url = richTextEditorUrl.GetUrl();
                 this.handle = richTextEditorUrl.Handle;
                 SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString()) {
-                    Width = "1200",
+                    Width = "1220",
                     Height = "730px",
                     Response = true,
                     Header = Translate.Text("Rich Text Editor")
