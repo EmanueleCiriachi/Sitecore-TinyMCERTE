@@ -1,8 +1,8 @@
 
-bin
-obj
-bin/Debug
-obj/Debug
+bin/
+obj/
+bin/Debug/
+obj/Debug/
 packages
 
 # User-specific files

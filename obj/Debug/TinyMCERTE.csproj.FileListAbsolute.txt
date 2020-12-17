@@ -57,3 +57,15 @@ C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.csproj.CopyComplete
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.dll
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.pdb
 C:\Projects\TinyMCERTE\TinyMCERTE\obj\Debug\TinyMCERTE.csprojAssemblyReference.cache
+C:\Projects\Sitecore TinyMCE\bin\Debug\TinyMCERTE.dll.config
+C:\Projects\Sitecore TinyMCE\bin\Debug\TinyMCERTE.dll
+C:\Projects\Sitecore TinyMCE\bin\Debug\TinyMCERTE.pdb
+C:\Projects\Sitecore TinyMCE\bin\Debug\HtmlAgilityPack.dll
+C:\Projects\Sitecore TinyMCE\bin\Debug\Sitecore.Client.dll
+C:\Projects\Sitecore TinyMCE\bin\Debug\Sitecore.ExperienceEditor.dll
+C:\Projects\Sitecore TinyMCE\bin\Debug\Sitecore.Kernel.dll
+C:\Projects\Sitecore TinyMCE\obj\Debug\TinyMCERTE.csprojAssemblyReference.cache
+C:\Projects\Sitecore TinyMCE\obj\Debug\TinyMCERTE.csproj.CoreCompileInputs.cache
+C:\Projects\Sitecore TinyMCE\obj\Debug\TinyMCERTE.csproj.CopyComplete
+C:\Projects\Sitecore TinyMCE\obj\Debug\TinyMCERTE.dll
+C:\Projects\Sitecore TinyMCE\obj\Debug\TinyMCERTE.pdb
