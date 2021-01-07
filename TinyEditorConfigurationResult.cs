@@ -29,5 +29,13 @@
         /// <summary>Gets or sets the CSSPath config element.</summary>
         /// <value>The CSS file to apply to the editor's content.</value>
         public string CSSPath { get; set; }
+
+        /// <summary>Gets or sets the EditorWindowWidth config element.</summary>
+        /// <value>The Width of the Editor Window.</value>
+        public string EditorWindowWidth { get; set; }
+
+        /// <summary>Gets or sets the EditorWindowHeight config element.</summary>
+        /// <value>The Height of the Editor Window.</value>
+        public string EditorWindowHeight { get; set; }
     }
 }

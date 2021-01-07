@@ -68,3 +68,7 @@ div[aria-label="Table properties"] .mce-container.mce-abs-layout-item.mce-formit
 div[aria-label="Table properties"] input.mce-textbox {
     max-width: 60px;
 }
+
+.mce-i-selectall:before {
+    content: "\e023";
+}

@@ -91,6 +91,7 @@
     </Compile>
     <Compile Include="TinyMCEEditorUrl.cs" />
     <Compile Include="TinyMCERTEType.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\TinyEditor.config">
@@ -246,8 +247,12 @@
     <Content Include="sitecore\shell\Controls\Lib\tinymce\tinymce.js" />
     <Content Include="sitecore\shell\Controls\Lib\tinymce\tinymce.min.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\BrowserDetection.js" />
-    <Content Include="sitecore\shell\Controls\TinyMCE Editor\Default.aspx" />
-    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.aspx" />
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\Default.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\EditorPage.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreImage.png" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\images\InsertSitecoreLink.png" />

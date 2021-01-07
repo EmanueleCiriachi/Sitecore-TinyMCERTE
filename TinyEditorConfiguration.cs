@@ -51,6 +51,12 @@ namespace TinyMCERTE {
                 if (Profile.Fields["Editor Branding"] != null) {
                     Result.EditorBranding = Profile.Fields["Editor Branding"].Value;
                 }
+                if (Profile.Fields["Editor Window Width"] != null) {
+                    Result.EditorWindowWidth = Profile.Fields["Editor Window Width"].Value;
+                }
+                if (Profile.Fields["Editor Window Height"] != null) {
+                    Result.EditorWindowHeight = Profile.Fields["Editor Window Height"].Value;
+                }
             }
 
             return this.Result;

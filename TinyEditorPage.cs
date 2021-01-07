@@ -106,29 +106,9 @@ namespace TinyMCERTE {
             base.OnLoad(e);
             if (this.IsPostBack || string.IsNullOrEmpty(WebUtil.GetQueryString("hdl")))
                 return;
-            TinyEditorConfigurationResult configurationResult = new TinyEditorConfigurationResult();
-            using (new UserSwitcher(user)) {
-                using (new SecurityEnabler()) {
-                    string queryString = WebUtil.GetQueryString("so", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
-                    Assert.IsNotNull((object)queryString, "source");
 
-                    Database coreDB = Sitecore.Data.Database.GetDatabase("core");
-                    Assert.IsNotNull((object)coreDB, "database");
-                    Sitecore.Data.Items.Item profile1 = coreDB.GetItem(queryString);
+            TinyEditorConfigurationResult configurationResult = Utils.LoadTinyEditorConfiguration();
 
-                    if (profile1 != null) {
-                        TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile1);
-                        configurationResult = editorConfiguration.Apply();
-                    } else {
-                        Sitecore.Data.Items.Item profile2 = coreDB.GetItem(Settings.HtmlEditor.DefaultProfile);
-                        if (profile2 != null)
-                        {
-                            TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile2);
-                            configurationResult = editorConfiguration.Apply();
-                        }
-                    }
-                }
-            }
             this.RegisterMediaPrefixes();
             
             this.EditorToolbar.Value = configurationResult.EditorToolbar;
