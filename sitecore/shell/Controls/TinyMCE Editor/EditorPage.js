@@ -24,9 +24,11 @@ EditorPage = function () {
         height: 500,
         selector: '#FieldText',
         menubar: EditorMenubar,
+        image_advtab: true,
         branding: EditorBranding,
         toolbar: EditorToolbar,
         plugins: EditorPlugins,
+        autosave_ask_before_unload: false,
         content_css: CSSPath,
         init_instance_callback: function (editor) {
           eval(EditorInitCallback);
