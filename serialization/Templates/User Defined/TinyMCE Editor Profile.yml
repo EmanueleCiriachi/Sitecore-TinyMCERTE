@@ -1,8 +1,8 @@
 ﻿---
 ID: "8a834537-cf42-4f59-8422-0b5a28a02421"
-Parent: "9dcaa659-d4b5-44d3-a578-08afb2730f7b"
+Parent: "02a8c246-c4d1-411a-8ea5-630dbad27d8c"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/User Defined/Data/TinyMCE Editor Profile
+Path: /sitecore/templates/User Defined/TinyMCE Editor Profile
 DB: core
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"

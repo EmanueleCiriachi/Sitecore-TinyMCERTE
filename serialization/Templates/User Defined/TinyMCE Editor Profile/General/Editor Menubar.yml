@@ -2,7 +2,7 @@
 ID: "4a4aa65b-3578-4f03-8ab0-a563d12aeda3"
 Parent: "401e1020-514c-41d2-8fbc-00ed301e1a1f"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/User Defined/Data/TinyMCE Editor Profile/General/Editor Menubar
+Path: /sitecore/templates/User Defined/TinyMCE Editor Profile/General/Editor Menubar
 DB: core
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"

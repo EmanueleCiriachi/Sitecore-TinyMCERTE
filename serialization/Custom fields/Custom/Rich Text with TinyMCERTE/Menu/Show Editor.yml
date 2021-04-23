@@ -4,7 +4,6 @@ Parent: "e73e516f-00df-496a-a73c-addc77259f98"
 Template: "998b965e-6ab8-4568-810f-8101d60d0cc3"
 Path: /sitecore/system/Field types/Custom/Rich Text with TinyMCERTE/Menu/Show Editor
 DB: core
-BranchID: "09b0eb6b-b6b6-4e40-8804-137a4cc14074"
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters

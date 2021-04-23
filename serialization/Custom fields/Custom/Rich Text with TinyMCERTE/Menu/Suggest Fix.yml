@@ -1,10 +1,9 @@
 ﻿---
-ID: "8dc0f6cb-92fc-4118-9273-d3927acfeffe"
+ID: "7c709015-5be9-4d4d-a578-e923ef456e6c"
 Parent: "e73e516f-00df-496a-a73c-addc77259f98"
 Template: "998b965e-6ab8-4568-810f-8101d60d0cc3"
-Path: /sitecore/system/Field types/Custom/Rich Text with TinyMCERTE/Menu/Edit Html
+Path: /sitecore/system/Field types/Custom/Rich Text with TinyMCERTE/Menu/Suggest Fix
 DB: core
-BranchID: "09b0eb6b-b6b6-4e40-8804-137a4cc14074"
 SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
@@ -15,25 +14,25 @@ SharedFields:
   Value: 
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
-  Value: 110
+  Value: 60
 - ID: "cab694fc-e37c-44eb-9012-488b775cf638"
   Hint: Message
-  Value: "richtext:edithtml(id=$Target)"
+  Value: "richtext:fix(id=$Target)"
 Languages:
 - Language: da
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: Rediger Html
+    Value: Foreslå reparation
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Rediger Html
+    Value: Foreslå reparation
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20150812T115957Z
+      Value: 20150812T120134Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -42,16 +41,16 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: Html bearbeiten
+    Value: Korrekturvorschlag
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: Html bearbeiten
+    Value: Korrekturvorschlag
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20150812T115528Z
+      Value: 20150812T115705Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -60,13 +59,13 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: Edit HTML
+    Value: Suggest fix
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20071126T092428Z
+      Value: 20071127T105640Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |
@@ -75,16 +74,16 @@ Languages:
   Fields:
   - ID: "9b72a62b-2775-423d-b17a-ec34a9f31af8"
     Hint: Display name
-    Value: HTML を編集する
+    Value: 修正のヒントを実行する
   - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
     Hint: __Display name
-    Value: HTML を編集する
+    Value: 修正のヒントを実行する
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20150812T115111Z
+      Value: 20150812T115309Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

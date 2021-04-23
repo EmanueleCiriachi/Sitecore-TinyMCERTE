@@ -2,7 +2,7 @@
 ID: "09ba145e-2ba8-42a5-a249-f9f770f77de9"
 Parent: "8a834537-cf42-4f59-8422-0b5a28a02421"
 Template: "8a834537-cf42-4f59-8422-0b5a28a02421"
-Path: /sitecore/templates/User Defined/Data/TinyMCE Editor Profile/__Standard Values
+Path: /sitecore/templates/User Defined/TinyMCE Editor Profile/__Standard Values
 DB: core
 Languages:
 - Language: en
