@@ -15,6 +15,6 @@ This is a Sitecore Control that uses the Tiny MCE Editor in place of the default
 
 ## How to install
 
-1. Download Sitecore update package: a) from Github releases if you want stable version; b) from AppVeyor if you want latest version
+1. Download Sitecore update package: a) from [Github releases](https://github.com/Antonytm/Sitecore-TinyMCERTE/releases) if you want stable version; b) from [AppVeyor](https://ci.appveyor.com/project/Antonytm/sitecore-tinymcerte) if you want latest version
 2. Install it using update installation wizard /sitecore/admin/UpdateInstallationWizard.aspx
 3. Set new field types on tempates that you want
