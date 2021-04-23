@@ -2,7 +2,7 @@
 <%@ Register Assembly="Sitecore.Kernel" Namespace="Sitecore.Web.UI.HtmlControls" TagPrefix="sc" %>
 
 <!DOCTYPE html>
-<html style="overflow: hidden; width: 100%; height: 100%">
+<html style="overflow: hidden; width: 100%; height: 100%" lang="en">
 <head runat="server">
   <title>Sitecore</title>
   <link href="/sitecore/shell/Themes/Standard/Default/Content Manager.css" rel="stylesheet" type="text/css" />

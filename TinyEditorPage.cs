@@ -158,7 +158,6 @@ namespace TinyMCERTE {
             base.OnPreRenderComplete(e);
             if (this.IsPostBack)
                 return;
-            int num = Sitecore.Client.AjaxScriptManager.IsEvent ? 1 : 0;
         }
 
         /// <summary>Called when [reject].</summary>

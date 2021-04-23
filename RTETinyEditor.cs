@@ -152,7 +152,7 @@ namespace TinyMCERTE
             
             base.HandleMessage(message);
 
-            if (!(message["id"] == this.ID))
+            if (message["id"] != this.ID)
                 return;
             switch (message.Name)
             {
@@ -171,7 +171,7 @@ namespace TinyMCERTE
                 return;
             if (args.IsPostBack)
             {
-                if (args.Result == null || !(args.Result != "undefined"))
+                if (args.Result == null || args.Result == "undefined")
                     return;
                 this.UpdateHtml(args);
             }
@@ -213,7 +213,7 @@ namespace TinyMCERTE
         {
             base.LoadPostData(value);
             Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
-            if (!(value != this.Value))
+            if (value == this.Value)
                 return false;
             this.Value = value;
             return true;
