@@ -6,7 +6,6 @@ using Sitecore.Text;
 using Sitecore.Web;
 using Sitecore.Web.UI.HtmlControls;
 using Sitecore.Web.UI.Sheer;
-using Sitecore.WordOCX;
 using System;
 using System.Web;
 
@@ -204,20 +203,6 @@ namespace TinyMCERTE
                 return;
             Sitecore.Context.ClientPage.Modified = true;
             SheerResponse.Eval("scContent.startValidators()");
-        }
-
-        /// <summary>Gets or sets the value.</summary>
-        /// <value>The value.</value>
-        public override string Value {
-            get {
-                WordFieldValue wordFieldValue = WordFieldValue.Parse(base.Value);
-                if (wordFieldValue.BlobId != Sitecore.Data.ID.Null)
-                    return wordFieldValue.GetHtmlWithStyles();
-                return base.Value;
-            }
-            set {
-                base.Value = value;
-            }
         }
 
         /// <summary>Updates the HTML.</summary>
