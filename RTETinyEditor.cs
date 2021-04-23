@@ -12,7 +12,8 @@ using Sitecore.Shell.Applications.ContentEditor;
 
 namespace TinyMCERTE
 {
-    public class RTETinyEditor : RichText {
+    public class RTETinyEditor : RichText
+    {
         /// <summary>The handle.</summary>
         private string handle;
         /// <summary>The item version.</summary>
@@ -20,7 +21,8 @@ namespace TinyMCERTE
         /// <summary>The set value on pre render.</summary>
         private bool setValueOnPreRender;
 
-        public RTETinyEditor() {
+        public RTETinyEditor()
+        {
             this.Class = "scContentControlHtml2";
             this.Activation = true;
             this.Attributes["tabindex"] = "-1";
@@ -28,11 +30,14 @@ namespace TinyMCERTE
 
         /// <summary>Gets or sets the field ID.</summary>
         /// <value>The field ID.</value>
-        public string FieldID {
-            get {
+        public string FieldID
+        {
+            get
+            {
                 return this.GetViewStateString(ExtensionMethods.nameof(() => FieldID));
             }
-            set {
+            set
+            {
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
                 this.SetViewStateString(ExtensionMethods.nameof(() => FieldID), value);
             }
@@ -40,11 +45,14 @@ namespace TinyMCERTE
 
         /// <summary>Gets or sets the item ID.</summary>
         /// <value>The item ID.</value>
-        public string ItemID {
-            get {
+        public string ItemID
+        {
+            get
+            {
                 return this.GetViewStateString(ExtensionMethods.nameof(() => ItemID));
             }
-            set {
+            set
+            {
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
                 this.SetViewStateString(ExtensionMethods.nameof(() => ItemID), value);
             }
@@ -52,11 +60,14 @@ namespace TinyMCERTE
 
         /// <summary>Gets or sets the item language.</summary>
         /// <value>The item language.</value>
-        public string ItemLanguage {
-            get {
+        public string ItemLanguage
+        {
+            get
+            {
                 return this.GetViewStateString(ExtensionMethods.nameof(() => ItemLanguage));
             }
-            set {
+            set
+            {
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
                 this.SetViewStateString(ExtensionMethods.nameof(() => ItemLanguage), value);
             }
@@ -64,11 +75,14 @@ namespace TinyMCERTE
 
         /// <summary>Gets or sets the item version.</summary>
         /// <value>The item version.</value>
-        public string ItemVersion {
-            get {
+        public string ItemVersion
+        {
+            get
+            {
                 return this.itemVersion;
             }
-            set {
+            set
+            {
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
                 this.itemVersion = value;
             }
@@ -76,13 +90,40 @@ namespace TinyMCERTE
 
         /// <summary>Gets or sets the source.</summary>
         /// <value>The source.</value>
-        public string Source {
-            get {
+        public string Source
+        {
+            get
+            {
                 return this.GetViewStateString(ExtensionMethods.nameof(() => Source));
             }
-            set {
+            set
+            {
+                //Ability to support 2 query parameters. &so={classic rich text editor profile} and &so_mce={tiny mce editor profile}
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
-                this.SetViewStateString(ExtensionMethods.nameof(() => Source), value);
+                var source = value;
+                var sourceMce = String.Empty;
+                if (value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase) > 0)
+                {
+                    source = value.Substring(0, value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase));
+                    sourceMce = value.Substring(value.IndexOf("&so_mce=", StringComparison.CurrentCultureIgnoreCase) + 8);
+                }
+                this.SetViewStateString(ExtensionMethods.nameof(() => Source), source);
+                this.SetViewStateString(ExtensionMethods.nameof(() => SourceMce), sourceMce);
+            }
+        }
+
+        /// <summary>Gets or sets the source mce.</summary>
+        /// <value>The source mce.</value>
+        public string SourceMce
+        {
+            get
+            {
+                return this.GetViewStateString(ExtensionMethods.nameof(() => SourceMce));
+            }
+            set
+            {
+                Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
+                this.SetViewStateString(ExtensionMethods.nameof(() => SourceMce), value);
             }
         }
 
@@ -90,23 +131,31 @@ namespace TinyMCERTE
         /// Gets or sets a value indicating whether this instance is tracking modified.
         /// </summary>
         /// <value><c>true</c> if  this instance is tracking modified; otherwise, <c>false</c>.</value>
-        public bool TrackModified {
-            get {
+        public bool TrackModified
+        {
+            get
+            {
                 return this.GetViewStateBool(ExtensionMethods.nameof(() => TrackModified), true);
             }
-            set {
+            set
+            {
                 this.SetViewStateBool(ExtensionMethods.nameof(() => TrackModified), value, true);
             }
         }
 
         /// <summary>Handles the message.</summary>
         /// <param name="message">The message.</param>
-        public override void HandleMessage(Message message) {
+        public override void HandleMessage(Message message)
+        {
             Assert.ArgumentNotNull((object)message, ExtensionMethods.nameof(() => message));
+
+            
             base.HandleMessage(message);
+
             if (!(message["id"] == this.ID))
                 return;
-            switch (message.Name) {
+            switch (message.Name)
+            {
                 case "tinyrte:edit":
                     Sitecore.Context.ClientPage.Start((object)this, "EditHtmlTinyMCE");
                     break;
@@ -115,16 +164,21 @@ namespace TinyMCERTE
 
         /// <summary>Edits the text.</summary>
         /// <param name="args">The args.</param>
-        protected void EditHtmlTinyMCE(ClientPipelineArgs args) {
+        protected void EditHtmlTinyMCE(ClientPipelineArgs args)
+        {
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
             if (this.Disabled)
                 return;
-            if (args.IsPostBack) {
+            if (args.IsPostBack)
+            {
                 if (args.Result == null || !(args.Result != "undefined"))
                     return;
                 this.UpdateHtml(args);
-            } else {
-                TinyMCEEditorUrl richTextEditorUrl = new TinyMCEEditorUrl() {
+            }
+            else
+            {
+                TinyMCEEditorUrl richTextEditorUrl = new TinyMCEEditorUrl()
+                {
                     Conversion = TinyMCEEditorUrl.HtmlConversion.DoNotConvert,
                     Disabled = this.Disabled,
                     FieldID = this.FieldID,
@@ -139,8 +193,10 @@ namespace TinyMCERTE
                     Version = this.ItemVersion
                 };
                 UrlString url = richTextEditorUrl.GetUrl();
+                url.Add("so_mce", SourceMce);
                 this.handle = richTextEditorUrl.Handle;
-                SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString()) {
+                SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString())
+                {
                     Width = "1200",
                     Height = "730px",
                     Response = true,
@@ -165,12 +221,14 @@ namespace TinyMCERTE
 
         /// <summary>Raises the <see cref="E:System.Web.UI.Control.Load"></see> event.</summary>
         /// <param name="e">The <see cref="T:System.EventArgs"></see> object that contains the event data.</param>
-        protected override void OnLoad(EventArgs e) {
+        protected override void OnLoad(EventArgs e)
+        {
             Assert.ArgumentNotNull((object)e, ExtensionMethods.nameof(() => e));
             base.OnLoad(e);
             if (Sitecore.Context.ClientPage.IsEvent)
                 return;
-            TinyMCEEditorUrl tinyMCEEditorUrl = new TinyMCEEditorUrl() {
+            TinyMCEEditorUrl tinyMCEEditorUrl = new TinyMCEEditorUrl()
+            {
                 Conversion = TinyMCEEditorUrl.HtmlConversion.DoNotConvert,
                 Disabled = this.Disabled,
                 FieldID = this.FieldID,
@@ -190,7 +248,8 @@ namespace TinyMCERTE
             this.SourceUri = url.ToString();
         }
 
-        protected override void OnPreRender(EventArgs e) {
+        protected override void OnPreRender(EventArgs e)
+        {
             Assert.ArgumentNotNull((object)e, ExtensionMethods.nameof(() => e));
             base.OnPreRender(e);
             if (this.setValueOnPreRender)
@@ -201,16 +260,19 @@ namespace TinyMCERTE
         }
 
         /// <summary>Sets the modified.</summary>
-        protected virtual void SetModified() {
+        protected virtual void SetModified()
+        {
             if (!this.TrackModified)
                 return;
             Sitecore.Context.ClientPage.Modified = true;
             SheerResponse.Eval("scContent.startValidators()");
         }
 
+
         /// <summary>Updates the HTML.</summary>
         /// <param name="args">The arguments.</param>
-        protected virtual void UpdateHtml(ClientPipelineArgs args) {
+        protected virtual void UpdateHtml(ClientPipelineArgs args)
+        {
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
             string str = args.Result;
             if (str == "__#!$No value$!#__")
@@ -225,8 +287,10 @@ namespace TinyMCERTE
         /// <summary>Processes the validate scripts.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Result of the value.</returns>
-        protected string ProcessValidateScripts(string value) {
-            if (Settings.HtmlEditor.RemoveScripts) {
+        protected string ProcessValidateScripts(string value)
+        {
+            if (Settings.HtmlEditor.RemoveScripts)
+            {
                 value = WebUtil.RemoveInlineScripts(value);
             }
             return value;
