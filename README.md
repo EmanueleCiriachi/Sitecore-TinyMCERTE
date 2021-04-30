@@ -52,6 +52,17 @@ You can create your own editor profiles or configure existing ones depending of 
  * *Editor Branding* - [turns on and off link "Powered by Tiny"](https://www.tiny.cloud/docs/configure/editor-appearance/#branding) displayed in the status bar. 
  * *Editor Style Formats* - [enables you to add more advanced style formats](https://www.tiny.cloud/docs-3x/reference/configuration/Configuration3x@style_formats/) for text and other elements.
 
+## Local development setup
+
+1. Clone repository
+1. Open command line
+1. Change dir to ".\Sitecore-TinyMCERTE\sitecore\shell\Controls\Lib"
+1. Run `npm install`. It will install TinyMCE npm package and all dependencies.
+1. Install and configure Unicorn on your Sitecore instance
+1. Edit `Sitecore-TinyMCERTE\App_Config\Include\TinyEditor.Serialization.config` file. Change `physicalRootPath` to correspond your local location of source folder
+1. Use `FolderProfile` publishing profile to publish your project (Create your own profile based on this one or edit existing ones)
+1. Sync TinyMCERTE Unicorn configuration after publishing of project
+
 
 
 
