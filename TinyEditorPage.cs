@@ -65,6 +65,8 @@ namespace TinyMCERTE {
         protected HiddenField EditorMenubar;
         /// <summary>The content of the "branding" configuration option in TinyMCE.</summary>
         protected HiddenField EditorBranding;
+        /// <summary>The content of the "style formats" configuration option in TinyMCE.</summary>
+        protected HiddenField EditorStyleFormats;
         /// <summary>The CSS file to apply to the editor's content</summary>
         protected HiddenField CSSPath;
         
@@ -107,7 +109,7 @@ namespace TinyMCERTE {
             if (this.IsPostBack || string.IsNullOrEmpty(WebUtil.GetQueryString("hdl")))
                 return;
 
-            TinyEditorConfigurationResult configurationResult = Utils.LoadTinyEditorConfiguration();
+            var configurationResult = Utils.LoadTinyEditorConfiguration();
 
             this.RegisterMediaPrefixes();
             
@@ -116,6 +118,7 @@ namespace TinyMCERTE {
             this.EditorInitCallback.Value = configurationResult.EditorInitCallback;
             this.EditorMenubar.Value = configurationResult.EditorMenubar;
             this.EditorBranding.Value = configurationResult.EditorBranding;
+            this.EditorStyleFormats.Value = configurationResult.EditorStyleFormats;
             this.CSSPath.Value = Sitecore.Configuration.Settings.GetSetting("WebStylesheet");
 
             this.RenderScriptConstants();
@@ -130,7 +133,6 @@ namespace TinyMCERTE {
             base.OnPreRenderComplete(e);
             if (this.IsPostBack)
                 return;
-            int num = Sitecore.Client.AjaxScriptManager.IsEvent ? 1 : 0;
         }
 
         /// <summary>Called when [reject].</summary>
@@ -147,7 +149,7 @@ namespace TinyMCERTE {
             if (args.Name == "editorpage:accept") {
                 this.OnAccept();
             } else {
-                if (!(args.Name == "editorpage:reject"))
+                if (args.Name != "editorpage:reject")
                     return;
                 this.OnReject();
             }

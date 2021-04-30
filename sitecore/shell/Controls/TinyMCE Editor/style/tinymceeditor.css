@@ -43,6 +43,10 @@
 	background: #fff;
 }
 
+.tox .tox-editor-container {
+    z-index: 0;
+}
+
 input:not([type]).mce-textbox {
     width: inherit !important;
 }

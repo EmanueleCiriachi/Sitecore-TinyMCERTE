@@ -1,0 +1,19 @@
+{
+  "name": "sitecore-tinymce",
+  "version": "1.0.0",
+  "description": "Node modules for tinymce on Sitecore",
+  "main": "index.js",
+  "dependencies": {
+    "tinymce": "^5.6.1"
+  },
+  "repository":{
+	"type": "git",
+	"url": "https://github.com/Antonytm/Sitecore-TinyMCERTE"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,24 @@
+﻿---
+ID: "09ba145e-2ba8-42a5-a249-f9f770f77de9"
+Parent: "8a834537-cf42-4f59-8422-0b5a28a02421"
+Template: "8a834537-cf42-4f59-8422-0b5a28a02421"
+Path: /sitecore/templates/User Defined/TinyMCE Editor Profile/__Standard Values
+DB: core
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20180523T164634Z
+    - ID: "4a4aa65b-3578-4f03-8ab0-a563d12aeda3"
+      Hint: Editor Menubar
+      Value: false
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        eco\emanuele.ciriachi@teneobluerubicon.com
+    - ID: "df49a151-5e77-44eb-a0ed-d51c507cafd0"
+      Hint: Editor Branding
+      Value: false

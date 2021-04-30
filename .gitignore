@@ -74,3 +74,5 @@ packages/*
 *.pubxml
 *.pubxml.user
 /dotPeek/
+tinymce
+app.publish

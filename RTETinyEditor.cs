@@ -7,12 +7,12 @@ using Sitecore.Web;
 using Sitecore.Web.UI.HtmlControls;
 using Sitecore.Web.UI.Sheer;
 using System;
-using System.Text.RegularExpressions;
 using System.Web;
+using Sitecore.Shell.Applications.ContentEditor;
 
 namespace TinyMCERTE
 {
-    public class TinyEditor : Frame
+    public class RTETinyEditor : RichText
     {
         /// <summary>The handle.</summary>
         private string handle;
@@ -21,7 +21,7 @@ namespace TinyMCERTE
         /// <summary>The set value on pre render.</summary>
         private bool setValueOnPreRender;
 
-        public TinyEditor()
+        public RTETinyEditor()
         {
             this.Class = "scContentControlHtml2";
             this.Activation = true;
@@ -98,8 +98,32 @@ namespace TinyMCERTE
             }
             set
             {
+                //Ability to support 2 query parameters. &so={classic rich text editor profile} and &so_mce={tiny mce editor profile}
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
-                this.SetViewStateString(ExtensionMethods.nameof(() => Source), value);
+                var source = value;
+                var sourceMce = String.Empty;
+                if (value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase) > -1)
+                {
+                    source = value.Substring(0, value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase));
+                    sourceMce = value.Substring(value.IndexOf("&so_mce=", StringComparison.CurrentCultureIgnoreCase) + 8);
+                }
+                this.SetViewStateString(ExtensionMethods.nameof(() => Source), source);
+                this.SetViewStateString(ExtensionMethods.nameof(() => SourceMce), sourceMce);
+            }
+        }
+
+        /// <summary>Gets or sets the source mce.</summary>
+        /// <value>The source mce.</value>
+        public string SourceMce
+        {
+            get
+            {
+                return this.GetViewStateString(ExtensionMethods.nameof(() => SourceMce));
+            }
+            set
+            {
+                Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
+                this.SetViewStateString(ExtensionMethods.nameof(() => SourceMce), value);
             }
         }
 
@@ -124,7 +148,10 @@ namespace TinyMCERTE
         public override void HandleMessage(Message message)
         {
             Assert.ArgumentNotNull((object)message, ExtensionMethods.nameof(() => message));
+
+            
             base.HandleMessage(message);
+
             if (message["id"] != this.ID)
                 return;
             switch (message.Name)
@@ -139,16 +166,6 @@ namespace TinyMCERTE
         /// <param name="args">The args.</param>
         protected void EditHtmlTinyMCE(ClientPipelineArgs args)
         {
-            TinyEditorConfigurationResult configurationResult = Utils.LoadTinyEditorConfiguration();
-
-            int windowWidth, windowHeight;
-            if (!int.TryParse(configurationResult.EditorWindowWidth, out windowWidth)) {
-                windowWidth = 1220;
-            }
-            if (!int.TryParse(configurationResult.EditorWindowHeight, out windowHeight)) {
-                windowHeight = 730;
-            }
-
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
             if (this.Disabled)
                 return;
@@ -175,16 +192,13 @@ namespace TinyMCERTE
                     Value = this.Value,
                     Version = this.ItemVersion
                 };
-                UrlString url = new UrlString(
-                    Regex.Replace(richTextEditorUrl.GetUrl().ToString(),
-                        "%26so_mce%3D",
-                        "&so_mce=",
-                        RegexOptions.IgnoreCase));
+                UrlString url = richTextEditorUrl.GetUrl();
+                url.Add("so_mce", SourceMce);
                 this.handle = richTextEditorUrl.Handle;
                 SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString())
                 {
-                    Width = string.Format("{0}px", windowWidth),
-                    Height = string.Format("{0}px", windowHeight),
+                    Width = "1200",
+                    Height = "730px",
                     Response = true,
                     Header = Translate.Text("Rich Text Editor")
                 });
@@ -197,6 +211,7 @@ namespace TinyMCERTE
         /// <returns>The load post data.</returns>
         protected override bool LoadPostData(string value)
         {
+            base.LoadPostData(value);
             Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
             if (value == this.Value)
                 return false;
@@ -252,6 +267,7 @@ namespace TinyMCERTE
             Sitecore.Context.ClientPage.Modified = true;
             SheerResponse.Eval("scContent.startValidators()");
         }
+
 
         /// <summary>Updates the HTML.</summary>
         /// <param name="args">The arguments.</param>
