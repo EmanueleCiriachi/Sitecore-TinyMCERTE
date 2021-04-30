@@ -25,10 +25,12 @@ EditorPage = function () {
         height: 500,
         selector: '#FieldText',
         menubar: EditorMenubar,
+        image_advtab: true,
         branding: EditorBranding,
         style_formats: eval(EditorStyleFormats),
         toolbar: EditorToolbar,
         plugins: EditorPlugins,
+        autosave_ask_before_unload: false,
         content_css: CSSPath,
         importcss_append: true,
         init_instance_callback: function (editor) {

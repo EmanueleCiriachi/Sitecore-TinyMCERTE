@@ -139,6 +139,16 @@ namespace TinyMCERTE
         /// <param name="args">The args.</param>
         protected void EditHtmlTinyMCE(ClientPipelineArgs args)
         {
+            TinyEditorConfigurationResult configurationResult = Utils.LoadTinyEditorConfiguration();
+
+            int windowWidth, windowHeight;
+            if (!int.TryParse(configurationResult.EditorWindowWidth, out windowWidth)) {
+                windowWidth = 1220;
+            }
+            if (!int.TryParse(configurationResult.EditorWindowHeight, out windowHeight)) {
+                windowHeight = 730;
+            }
+
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
             if (this.Disabled)
                 return;
@@ -173,8 +183,8 @@ namespace TinyMCERTE
                 this.handle = richTextEditorUrl.Handle;
                 SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString())
                 {
-                    Width = "1200",
-                    Height = "730px",
+                    Width = string.Format("{0}px", windowWidth),
+                    Height = string.Format("{0}px", windowHeight),
                     Response = true,
                     Header = Translate.Text("Rich Text Editor")
                 });

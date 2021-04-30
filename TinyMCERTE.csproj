@@ -117,6 +117,7 @@
     </Compile>
     <Compile Include="TinyMCEEditorUrl.cs" />
     <Compile Include="TinyMCERTEType.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />

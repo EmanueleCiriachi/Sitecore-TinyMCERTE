@@ -108,34 +108,9 @@ namespace TinyMCERTE {
             base.OnLoad(e);
             if (this.IsPostBack || string.IsNullOrEmpty(WebUtil.GetQueryString("hdl")))
                 return;
-            TinyEditorConfigurationResult configurationResult = new TinyEditorConfigurationResult();
-            using (new UserSwitcher(user)) {
-                using (new SecurityEnabler()) {
-                    //Compatibility with Sitecore builtin Telerik RTE:
-                    //"so" - default parameter left for RTE
-                    //"so_mce" - new parameter to setup profile for so_mce
-                    //if you need to setup profile, you need to type &so_mce=/sitecore/system/Settings/TinyMCE Editor Profiles/TinyMCE Full Classic Profile
-                    string queryString = WebUtil.GetQueryString("so_mce", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
 
-                    Assert.IsNotNull((object)queryString, "source");
+            var configurationResult = Utils.LoadTinyEditorConfiguration();
 
-                    Database coreDB = Sitecore.Data.Database.GetDatabase("core");
-                    Assert.IsNotNull((object)coreDB, "database");
-                    Sitecore.Data.Items.Item profile1 = coreDB.GetItem(queryString);
-
-                    if (profile1 != null) {
-                        TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile1);
-                        configurationResult = editorConfiguration.Apply();
-                    } else {
-                        Sitecore.Data.Items.Item profile2 = coreDB.GetItem(Settings.HtmlEditor.DefaultProfile);
-                        if (profile2 != null)
-                        {
-                            TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile2);
-                            configurationResult = editorConfiguration.Apply();
-                        }
-                    }
-                }
-            }
             this.RegisterMediaPrefixes();
             
             this.EditorToolbar.Value = configurationResult.EditorToolbar;

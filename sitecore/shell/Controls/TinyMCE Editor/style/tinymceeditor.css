@@ -46,3 +46,33 @@
 .tox .tox-editor-container {
     z-index: 0;
 }
+
+input:not([type]).mce-textbox {
+    width: inherit !important;
+}
+
+div[aria-label="Insert link"] input.mce-textbox {
+    max-width: 70%;
+}
+
+div[aria-label="Table properties"][role="dialog"] {
+    width: 420px;
+}
+
+div[aria-label="Table properties"] .mce-container-body.mce-abs-layout,
+div[aria-label="Table properties"] .mce-container.mce-form.mce-abs-layout-item.mce-first,
+div[aria-label="Table properties"] .mce-container.mce-panel.mce-abs-layout-item.mce-first {
+    width: 418px !important;
+}
+
+div[aria-label="Table properties"] .mce-container.mce-abs-layout-item.mce-formitem {
+    width: 210px !important;
+}
+
+div[aria-label="Table properties"] input.mce-textbox {
+    max-width: 60px;
+}
+
+.mce-i-selectall:before {
+    content: "\e023";
+}
