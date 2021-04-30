@@ -102,7 +102,7 @@ namespace TinyMCERTE
                 Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
                 var source = value;
                 var sourceMce = String.Empty;
-                if (value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase) > 0)
+                if (value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase) > -1)
                 {
                     source = value.Substring(0, value.IndexOf("&so_mce=", StringComparison.InvariantCultureIgnoreCase));
                     sourceMce = value.Substring(value.IndexOf("&so_mce=", StringComparison.CurrentCultureIgnoreCase) + 8);
