@@ -13,7 +13,7 @@ New-Item -Name build\package\bin -ItemType directory
 New-Item -Name build\package\App_Config\Include -ItemType directory
 
 
-Copy-Item .\bin\debug\TinyMCERTE* .\build\package\bin
+Copy-Item .\bin\TinyMCERTE* .\build\package\bin
 Copy-Item .\sitecore\* .\build\package\sitecore -recurse
 Copy-Item .\App_Config\Include\TinyEditor.config .\build\package\App_Config\Include
 Copy-Item .\App_Config\Include\TinyMce.FieldType.config .\build\package\App_Config\Include
