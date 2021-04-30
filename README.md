@@ -44,6 +44,13 @@ All available *TinyMCE* editing profiles are located in *core* database under pa
  * /sitecore/system/Settings/TinyMCE Editor Profiles/TinyMCE Full Classic Profile
  * /sitecore/system/Settings/TinyMCE Editor Profiles/TinyMCE Standard Common Profile
 
+You can create your own editor profiles or configure existing ones depending of your needs. Each profile has next abilities for configuration:
+ * *Editor Toolbar* - provides ability to configure buttons that should be [available on the toolbar](https://www.tiny.cloud/docs/advanced/available-toolbar-buttons/). 
+ * *Editor plugins* - provides ability to configure usage of different [availabe TinyMCE plugins](https://www.tiny.cloud/docs/plugins/opensource/anchor/)
+ * *Editor Init Callback* - allows to [run your custom JavaScript](https://www.tiny.cloud/docs-3x/reference/configuration/Configuration3x@init_instance_callback/) on the start of TinyMCE editor. It is required for ability to use some plugins or extend editor by yourself.
+ * *Editor Menubar* - controls [enabling/disabling of menu bar](https://www.tiny.cloud/docs/configure/editor-appearance/#exampledisablingremovingthemenubar).
+ * *Editor Branding* - [turns on and off link "Powered by Tiny"](https://www.tiny.cloud/docs/configure/editor-appearance/#branding) displayed in the status bar. 
+ * *Editor Style Formats* - [enables you to add more advanced style formats](https://www.tiny.cloud/docs-3x/reference/configuration/Configuration3x@style_formats/) for text and other elements.
 
 
 
