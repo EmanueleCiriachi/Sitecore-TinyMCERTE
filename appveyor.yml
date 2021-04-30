@@ -39,7 +39,6 @@ install:
   - ps: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
   - choco install sitecore-courier
   - choco install "msbuild-sonarqube-runner" -y
-  - choco install visualstudio2019buildtools
   - cd "sitecore\shell\Controls\Lib"
   - ps: Install-Product node $env:nodejs_version
   - ps: npm install
