@@ -74,3 +74,4 @@ packages/*
 *.pubxml
 *.pubxml.user
 /dotPeek/
+tinymce
