@@ -89,7 +89,6 @@ namespace TinyMCERTE.Commands {
         }
 
         /// <summary>Called when media tree view clicked.</summary>
-        [UsedImplicitly]
         private void OnMediaTreeviewClicked() {
             this.SetUploadButtonAvailability();
         }
