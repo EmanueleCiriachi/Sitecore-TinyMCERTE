@@ -73,6 +73,7 @@ namespace TinyMCERTE {
         protected void OnAccept() {
             SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["FieldText"]);
             richTextContentArgs.Content = WebEditUtil.RepairLinks(richTextContentArgs.Content);
+            richTextContentArgs.Content = Sitecore.Links.LinkManager.ExpandDynamicLinks(richTextContentArgs.Content);
             using (new LongRunningOperationWatcher(250, "saveRichTextContent", new string[0]))
                 CorePipeline.Run("saveRichTextContent", (PipelineArgs)richTextContentArgs);
             if (!RichTextEditorUrl.Parse(this.Context.Request.RawUrl).ShowInFrameBasedDialog)
