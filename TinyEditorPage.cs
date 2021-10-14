@@ -56,22 +56,24 @@ namespace TinyMCERTE {
         /// </summary>
         protected System.Web.UI.HtmlControls.HtmlTextArea FieldText;
         /// <summary>The content of the "toolbar" configuration option in TinyMCE.</summary>
-        protected HiddenField EditorToolbar;
+        protected HiddenField EditorToolbar = new HiddenField();
         /// <summary>The content of the "plugins" configuration option in TinyMCE.</summary>
-        protected HiddenField EditorPlugins;
+        protected HiddenField EditorPlugins = new HiddenField();
         /// <summary>The javascript callback after TinyMCE is initialised.</summary>
-        protected HiddenField EditorInitCallback;
+        protected HiddenField EditorInitCallback = new HiddenField();
         /// <summary>The content of the "menubar" configuration option in TinyMCE.</summary>
-        protected HiddenField EditorMenubar;
+        protected HiddenField EditorMenubar = new HiddenField();
         /// <summary>The content of the "branding" configuration option in TinyMCE.</summary>
-        protected HiddenField EditorBranding;
+        protected HiddenField EditorBranding = new HiddenField();
+        /// <summary>The content of the "style formats" configuration option in TinyMCE.</summary>
+        protected HiddenField EditorStyleFormats = new HiddenField();
         /// <summary>The CSS file to apply to the editor's content</summary>
-        protected HiddenField CSSPath;
-        
+        protected HiddenField CSSPath = new HiddenField();
+
 
         /// <summary>Handles the Accept_ click event.</summary>
         protected void OnAccept() {
-            SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["FieldText"]);
+            SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["EditorValue"]);
             richTextContentArgs.Content = WebEditUtil.RepairLinks(richTextContentArgs.Content);
             richTextContentArgs.Content = Sitecore.Links.LinkManager.ExpandDynamicLinks(richTextContentArgs.Content);
             using (new LongRunningOperationWatcher(250, "saveRichTextContent", new string[0]))
@@ -107,29 +109,9 @@ namespace TinyMCERTE {
             base.OnLoad(e);
             if (this.IsPostBack || string.IsNullOrEmpty(WebUtil.GetQueryString("hdl")))
                 return;
-            TinyEditorConfigurationResult configurationResult = new TinyEditorConfigurationResult();
-            using (new UserSwitcher(user)) {
-                using (new SecurityEnabler()) {
-                    string queryString = WebUtil.GetQueryString("so", Sitecore.Configuration.Settings.GetSetting("TinyEditor.DefaultProfile"));
-                    Assert.IsNotNull((object)queryString, "source");
 
-                    Database database = Sitecore.Context.Database;
-                    Assert.IsNotNull((object)database, "database");
-                    Sitecore.Data.Items.Item profile1 = database.GetItem(queryString);
+            var configurationResult = Utils.LoadTinyEditorConfiguration();
 
-                    if (profile1 != null) {
-                        TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile1);
-                        configurationResult = editorConfiguration.Apply();
-                    } else {
-                        Sitecore.Data.Items.Item profile2 = database.GetItem(Settings.HtmlEditor.DefaultProfile);
-                        if (profile2 != null)
-                        {
-                            TinyEditorConfiguration editorConfiguration = TinyEditorConfiguration.Create(profile2);
-                            configurationResult = editorConfiguration.Apply();
-                        }
-                    }
-                }
-            }
             this.RegisterMediaPrefixes();
             
             this.EditorToolbar.Value = configurationResult.EditorToolbar;
@@ -137,6 +119,7 @@ namespace TinyMCERTE {
             this.EditorInitCallback.Value = configurationResult.EditorInitCallback;
             this.EditorMenubar.Value = configurationResult.EditorMenubar;
             this.EditorBranding.Value = configurationResult.EditorBranding;
+            this.EditorStyleFormats.Value = configurationResult.EditorStyleFormats;
             this.CSSPath.Value = Sitecore.Configuration.Settings.GetSetting("WebStylesheet");
 
             this.RenderScriptConstants();
@@ -151,7 +134,6 @@ namespace TinyMCERTE {
             base.OnPreRenderComplete(e);
             if (this.IsPostBack)
                 return;
-            int num = Sitecore.Client.AjaxScriptManager.IsEvent ? 1 : 0;
         }
 
         /// <summary>Called when [reject].</summary>
@@ -168,7 +150,7 @@ namespace TinyMCERTE {
             if (args.Name == "editorpage:accept") {
                 this.OnAccept();
             } else {
-                if (!(args.Name == "editorpage:reject"))
+                if (args.Name != "editorpage:reject")
                     return;
                 this.OnReject();
             }

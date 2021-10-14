@@ -8,6 +8,7 @@ using Sitecore.Web.UI.HtmlControls;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.WordOCX;
 using System;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace TinyMCERTE
@@ -115,7 +116,18 @@ namespace TinyMCERTE
 
         /// <summary>Edits the text.</summary>
         /// <param name="args">The args.</param>
-        protected void EditHtmlTinyMCE(ClientPipelineArgs args) {
+        protected void EditHtmlTinyMCE(ClientPipelineArgs args)
+        {
+            TinyEditorConfigurationResult configurationResult = Utils.LoadTinyEditorConfiguration();
+
+            int windowWidth, windowHeight;
+            if (!int.TryParse(configurationResult.EditorWindowWidth, out windowWidth)) {
+                windowWidth = 1220;
+            }
+            if (!int.TryParse(configurationResult.EditorWindowHeight, out windowHeight)) {
+                windowHeight = 730;
+            }
+
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
             if (this.Disabled)
                 return;
@@ -138,11 +150,16 @@ namespace TinyMCERTE
                     Value = this.Value,
                     Version = this.ItemVersion
                 };
-                UrlString url = richTextEditorUrl.GetUrl();
+                UrlString url = new UrlString(
+                    Regex.Replace(richTextEditorUrl.GetUrl().ToString(),
+                        "%26so_mce%3D",
+                        "&so_mce=",
+                        RegexOptions.IgnoreCase));
                 this.handle = richTextEditorUrl.Handle;
-                SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString()) {
-                    Width = "1200",
-                    Height = "730px",
+                SheerResponse.ShowModalDialog(new ModalDialogOptions(url.ToString())
+                {
+                    Width = string.Format("{0}px", windowWidth),
+                    Height = string.Format("{0}px", windowHeight),
                     Response = true,
                     Header = Translate.Text("Rich Text Editor")
                 });
@@ -155,7 +172,7 @@ namespace TinyMCERTE
         /// <returns>The load post data.</returns>
         protected override bool LoadPostData(string value) {
             Assert.ArgumentNotNull((object)value, ExtensionMethods.nameof(() => value));
-            if (!(value != this.Value))
+            if (value == this.Value)
                 return false;
             this.Value = value;
             return true;

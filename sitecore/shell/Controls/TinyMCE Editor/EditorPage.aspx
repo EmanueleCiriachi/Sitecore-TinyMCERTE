@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditorPage.aspx.cs" Inherits="TinyMCERTE.TinyEditorPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="TinyMCERTE.TinyEditorPage" %>
 <%@ Register Assembly="Sitecore.Kernel" Namespace="Sitecore.Web.UI.HtmlControls" TagPrefix="sc" %>
 
 <!DOCTYPE html>
-<html style="overflow: hidden; width: 100%; height: 100%">
+<html style="overflow: hidden; width: 100%; height: 100%" lang="en">
 <head runat="server">
   <title>Sitecore</title>
   <link href="/sitecore/shell/Themes/Standard/Default/Content Manager.css" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
   </script>
   <script src="/sitecore/shell/controls/lib/prototype/prototype.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/EditorPage.js" type="text/javascript"></script>
-  <script src="/sitecore/shell/controls/lib/tinymce/tinymce.js" type="text/javascript"></script>
+  <script src="/sitecore/shell/controls/lib/node_modules/tinymce/tinymce.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/SitecoreTinyMCEButtons.js" type="text/javascript"></script>
   <script src="/sitecore/shell/Controls/TinyMCE Editor/jquery.modal.min.js" type="text/javascript"></script>
 
@@ -38,6 +38,7 @@
     <asp:HiddenField ID="EditorInitCallback" runat="server" />
     <asp:HiddenField ID="EditorMenubar" runat="server" />
     <asp:HiddenField ID="EditorBranding" runat="server" />
+    <asp:HiddenField ID="EditorStyleFormats" runat="server" />
     <asp:HiddenField ID="CSSPath" runat="server" />
 
     <input type="hidden" id="EditorValue" />

@@ -18,16 +18,23 @@ EditorPage = function () {
     var EditorInitCallback = $j("#EditorInitCallback").val();
     var EditorMenubar = $j("#EditorMenubar").val();
     var EditorBranding = $j("#EditorBranding").val();
+    var EditorStyleFormats = $j("#EditorStyleFormats").val();
     var CSSPath = $j("#CSSPath").val();
 
     tinyeditorref = tinymce.init({
         height: 500,
         selector: '#FieldText',
         menubar: EditorMenubar,
+        image_advtab: true,
         branding: EditorBranding,
+        style_formats: eval(EditorStyleFormats),
         toolbar: EditorToolbar,
         plugins: EditorPlugins,
+        autosave_ask_before_unload: false,
         content_css: CSSPath,
+        importcss_append: true,
+        extended_valid_elements: "style,link[href|rel]",
+        custom_elements: "style,link,~link",
         init_instance_callback: function (editor) {
           eval(EditorInitCallback);
         }

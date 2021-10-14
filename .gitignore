@@ -1,4 +1,9 @@
 
+bin/
+obj/
+bin/Debug/
+obj/Debug/
+packages
 
 # User-specific files
 *.rsuser
@@ -69,3 +74,5 @@ packages/*
 *.pubxml
 *.pubxml.user
 /dotPeek/
+tinymce
+app.publish
