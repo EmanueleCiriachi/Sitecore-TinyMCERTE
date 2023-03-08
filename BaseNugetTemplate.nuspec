@@ -1,0 +1,26 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata minClientVersion="2.9">
+    <id>Sitecore-TinyMCERTE</id>
+    <version>10.1.0</version>
+    <title>Sitecore TinyMCE</title>
+    <authors>Emanuele Ciriachi</authors>
+    <owners>Emanuele Ciriachi</owners>
+    <licenseUrl>https://choosealicense.com/licenses/mit/</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Adds support for TinyMCE in Sitecore.</description>
+    <releaseNotes>
+      Updated 07/03/23 for .NetFramework 4.8 and Sitecore 10.
+    </releaseNotes>
+    <developmentDependency>true</developmentDependency>
+    <dependencies>
+      <dependency id="EntityFramework" version="6.2.0" />
+    </dependencies>
+    <references>
+      <reference file="TinyMCERTE.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="lib\*.dll" target="lib" />
+  </files>
+</package>

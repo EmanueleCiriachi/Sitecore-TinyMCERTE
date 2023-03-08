@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TinyMCERTE</RootNamespace>
     <AssemblyName>TinyMCERTE</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -43,6 +43,12 @@
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>extlib\HtmlAgilityPack.dll</HintPath>
@@ -60,6 +66,7 @@
       <HintPath>extlib\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -262,6 +269,7 @@
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\SitecoreTinyMCEButtons.js" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\style\jquery.modal.min.css" />
     <Content Include="sitecore\shell\Controls\TinyMCE Editor\style\tinymceeditor.css" />
+    <Content Include="tools\Sitecore.NuGet.1.0.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="sitecore\shell\Controls\Lib\tinymce\langs\readme.md" />
@@ -283,13 +291,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <Content Include="BaseNugetTemplate.nuspec">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Sitecore Package\TinyMCE for Sitecore - Core Items-1.0.zip" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="lib\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)bin\$(ConfigurationName)\$(TargetFileName)" "$(ProjectDir)lib" /Y</PostBuildEvent>
+    <PostBuildEvent>"$(ProjectDir)packages\NuGet.CommandLine.4.6.4\tools\nuget.exe" pack $(ProjectDir)BaseNugetTemplate.nuspec</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
