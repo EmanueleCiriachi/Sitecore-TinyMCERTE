@@ -1,23 +1,24 @@
 ﻿using Sitecore;
 using Sitecore.Configuration;
-using Sitecore.Data;
 using Sitecore.Diagnostics;
 using Sitecore.Pipelines;
 using Sitecore.Resources.Media;
 using Sitecore.Security.Accounts;
-using Sitecore.SecurityModel;
 using Sitecore.Shell.Applications.ContentEditor.RichTextEditor;
 using Sitecore.Shell.Controls.RichTextEditor.Pipelines.LoadRichTextContent;
 using Sitecore.Shell.Controls.RichTextEditor.Pipelines.SaveRichTextContent;
+using Sitecore.Sites;
 using Sitecore.Web;
 using Sitecore.Web.UI.Sheer;
 using Sitecore.Web.UI.WebControls;
 using Sitecore.Web.UI.XamlSharp.Ajax;
 using System;
+using System.Linq;
 using System.Text;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using TinyMCERTE.Helpers;
 
 namespace TinyMCERTE {
     public class TinyEditorPage : System.Web.UI.Page {
@@ -71,9 +72,17 @@ namespace TinyMCERTE {
 
         /// <summary>Handles the Accept_ click event.</summary>
         protected void OnAccept() {
+
+
+            //Fetch Site Context from the item
+            SiteInfo siteInfo = SiteContextFactory.Sites.Where(s => s.Name == "globalknowledge.com").FirstOrDefault();
+            var siteContext = SiteContext.GetSite(siteInfo.Name);
+
             SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["FieldText"]);
             richTextContentArgs.Content = WebEditUtil.RepairLinks(richTextContentArgs.Content);
-            richTextContentArgs.Content = Sitecore.Links.LinkManager.ExpandDynamicLinks(richTextContentArgs.Content);
+
+            richTextContentArgs.Content = DynamicLinkExpander.ProcessHtml(richTextContentArgs.Content, siteContext);
+
             using (new LongRunningOperationWatcher(250, "saveRichTextContent", new string[0]))
                 CorePipeline.Run("saveRichTextContent", (PipelineArgs)richTextContentArgs);
             if (!RichTextEditorUrl.Parse(this.Context.Request.RawUrl).ShowInFrameBasedDialog)
@@ -91,7 +100,7 @@ namespace TinyMCERTE {
         /// </param>
         protected override void OnInit(EventArgs e) {
             base.OnInit(e);
-            Sitecore.Client.AjaxScriptManager.OnExecute += new AjaxScriptManager.ExecuteDelegate(this.AjaxScriptManager_OnExecute);
+            Client.AjaxScriptManager.OnExecute += new AjaxScriptManager.ExecuteDelegate(this.AjaxScriptManager_OnExecute);
         }
 
         /// <summary>

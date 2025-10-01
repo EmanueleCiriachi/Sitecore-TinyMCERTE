@@ -4,6 +4,7 @@ obj/
 bin/Debug/
 obj/Debug/
 packages
+MSBuild_Logs/
 
 # User-specific files
 *.rsuser

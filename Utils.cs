@@ -3,11 +3,6 @@ using Sitecore.Data;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
 using Sitecore.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TinyMCERTE {
     public static class Utils {
