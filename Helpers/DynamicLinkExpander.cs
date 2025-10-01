@@ -2,6 +2,8 @@
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
+using Sitecore.Resources.Media;
 using Sitecore.Sites;
 using System;
 using System.Text.RegularExpressions;
@@ -13,7 +15,7 @@ namespace TinyMCERTE.Helpers {
         public static string ExpandURL(Guid itemId, SiteContext siteContext) {
             using (new SiteContextSwitcher(siteContext)) {
                 // Get the context database (usually "master" or "web")  
-                Database database = Sitecore.Context.Database ?? Sitecore.Configuration.Factory.GetDatabase("master");
+                Database database = siteContext.Database;
 
                 // Retrieve the item by ID  
                 Item item = database.GetItem(itemId.ToID());
@@ -29,8 +31,29 @@ namespace TinyMCERTE.Helpers {
             }
         }
 
-        public static string ProcessHtml(string html, SiteContext siteContext) {
+        public static string ExpandImageURL(Guid itemId, SiteContext siteContext) {
+            // Get the context database (usually "master" or "web")  
+            Database database = siteContext.Database;
 
+            // Retrieve the item by ID  
+            Item item = database.GetItem(itemId.ToID());
+
+            // Create MediaItem from the item  
+            MediaItem mediaItem = new MediaItem(item);
+
+            // Setup MediaUrlBuilderOptions as needed (e.g., absolute URL, etc.)  
+            var options = new MediaUrlBuilderOptions {
+                AbsolutePath = false,               // set to true if you want absolute URL  
+                AlwaysIncludeServerUrl = false,     // true to include scheme and hostname  
+                LanguageEmbedding = LanguageEmbedding.Never
+            };
+
+            var url = MediaManager.GetMediaUrl(mediaItem, options);
+
+            return url;
+        }
+
+        public static string ProcessHtml(string html, SiteContext siteContext) {
             if (string.IsNullOrEmpty(html))
                 return html;
 
@@ -39,9 +62,11 @@ namespace TinyMCERTE.Helpers {
             string hrefPattern = @"href\s*=\s*([""'])(.*?)\1";
 
             // Regex to find GUID (with or without braces)  
-            Regex guidRegex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}");
+            Regex guidRegex = new Regex(@"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", RegexOptions.IgnoreCase);
 
-            // Use Regex.Replace with a MatchEvaluator to process each href attribute  
+            // Regex to match /media/{32 hex chars}.ashx pattern and capture the 32 hex chars  
+            Regex mediaGuidRegex = new Regex(@"^[-]?/media/([0-9a-fA-F]{32})\.ashx$", RegexOptions.IgnoreCase);
+
             string result = Regex.Replace(html, hrefPattern, match =>
             {
                 string quote = match.Groups[1].Value;
@@ -50,35 +75,42 @@ namespace TinyMCERTE.Helpers {
                 // Decode HTML entities in href  
                 string decodedHref = HttpUtility.HtmlDecode(hrefValue);
 
-                // Try to parse _id parameter from href query string  
+                // Try to parse _id parameter from href query string first  
                 int queryStart = decodedHref.IndexOf('?');
-                if (queryStart < 0) {
-                    // No query string, skip  
-                    return match.Value;
+                if (queryStart >= 0) {
+                    string queryString = decodedHref.Substring(queryStart + 1);
+                    var queryParams = HttpUtility.ParseQueryString(queryString);
+
+                    string idParam = queryParams["_id"];
+                    if (!string.IsNullOrEmpty(idParam)) {
+                        // Clean idParam from braces if any  
+                        string cleanId = idParam.Trim('{', '}');
+
+                        if (Guid.TryParse(cleanId, out Guid itemId)) {
+                            string expandedUrl = ExpandURL(itemId, siteContext);
+                            return $"href={quote}{expandedUrl}{quote}";
+                        }
+                    }
                 }
 
-                string queryString = decodedHref.Substring(queryStart + 1);
-                var queryParams = HttpUtility.ParseQueryString(queryString);
+                // If no _id param or invalid, check if href matches /media/{32hex}.ashx pattern  
+                var mediaMatch = mediaGuidRegex.Match(decodedHref);
+                if (mediaMatch.Success) {
+                    string hex32 = mediaMatch.Groups[1].Value;
 
-                string idParam = queryParams["_id"];
-                if (string.IsNullOrEmpty(idParam)) {
-                    // No _id param, skip  
-                    return match.Value;
+                    // Convert 32 hex chars into a GUID string with dashes  
+                    // GUID format: 8-4-4-4-12  
+                    string guidStr = $"{hex32.Substring(0, 8)}-{hex32.Substring(8, 4)}-{hex32.Substring(12, 4)}-{hex32.Substring(16, 4)}-{hex32.Substring(20, 12)}";
+
+                    if (Guid.TryParse(guidStr, out Guid mediaGuid)) {
+                        string expandedUrl = ExpandImageURL(mediaGuid, siteContext);
+                        return $"href={quote}{expandedUrl}{quote}";
+                    }
                 }
 
-                // Clean idParam from braces if any  
-                string cleanId = idParam.Trim('{', '}');
+                // No matching pattern, return original  
+                return match.Value;
 
-                if (Guid.TryParse(cleanId, out Guid itemId)) {
-                    // Call ExpandURL with the parsed GUID  
-                    string expandedUrl = ExpandURL(itemId, siteContext);
-
-                    // Return href attribute with replaced URL, preserving original quote style  
-                    return $"href={quote}{expandedUrl}{quote}";
-                } else {
-                    // _id param is not a valid GUID, skip  
-                    return match.Value;
-                }
             }, RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
             return result;
