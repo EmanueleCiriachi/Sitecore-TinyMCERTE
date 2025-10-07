@@ -85,7 +85,16 @@ namespace TinyMCERTE.Commands {
         /// </contract>
         private string GetMediaUrl(Item item) {
             Assert.ArgumentNotNull((object)item, ExtensionMethods.nameof(() => item));
-            return MediaManager.GetMediaUrl((MediaItem)item, MediaUrlOptions.GetShellOptions());
+            // Use MediaUrlBuilderOptions instead of obsolete MediaUrlOptions
+            var options = new Sitecore.Links.UrlBuilders.MediaUrlBuilderOptions {
+                // If you need shell-specific options, set properties accordingly.
+                // For example, you might want to set AlwaysIncludeServerUrl, etc.
+                // Here, we mimic GetShellOptions() as closely as possible.
+                AbsolutePath = false,               // set to true if you want absolute URL  
+                AlwaysIncludeServerUrl = false,     // true to include scheme and hostname  
+                LanguageEmbedding = LanguageEmbedding.Never,
+            };
+            return MediaManager.GetMediaUrl((MediaItem)item, options);
         }
 
         /// <summary>Called when media tree view clicked.</summary>

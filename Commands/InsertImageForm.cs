@@ -2,6 +2,8 @@
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.IO;
+using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
 using Sitecore.Shell.Controls.RichTextEditor.InsertImage;
 using Sitecore.Web.UI.HtmlControls;
@@ -12,13 +14,7 @@ using System.Web;
 
 namespace TinyMCERTE.Commands {
     public class InsertTinyMCEImageForm : InsertImageForm {
-        /// <summary>Handles a click on the OK button.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="args">The arguments.</param>
-        /// <remarks>
-        /// When the user clicks OK, the dialog is closed by calling
-        /// the <see cref="M:Sitecore.Web.UI.Sheer.ClientResponse.CloseWindow">CloseWindow</see> method.
-        /// </remarks>
+
         protected override void OnOK(object sender, EventArgs args) {
             Assert.ArgumentNotNull(sender, ExtensionMethods.nameof(() => sender));
             Assert.ArgumentNotNull((object)args, ExtensionMethods.nameof(() => args));
@@ -38,11 +34,15 @@ namespace TinyMCERTE.Commands {
                 else if (!(MediaManager.GetMedia(MediaUri.Parse((Item)mediaItem)) is ImageMedia)) {
                     SheerResponse.Alert("The selected item is not an image. Select an image to continue.");
                 } else {
-                    MediaUrlOptions shellOptions = MediaUrlOptions.GetShellOptions();
-                    shellOptions.Language = this.ContentLanguage;
+                    // Replace obsolete MediaUrlOptions with MediaUrlBuilderOptions
+                    var shellOptions = new MediaUrlBuilderOptions {
+                        AbsolutePath = false,               // set to true if you want absolute URL  
+                        AlwaysIncludeServerUrl = false,     // true to include scheme and hostname  
+                        LanguageEmbedding = LanguageEmbedding.Never
+                    };
                     string text = !string.IsNullOrEmpty(HttpContext.Current.Request.Form["AlternateText"]) ? HttpContext.Current.Request.Form["AlternateText"] : mediaItem.Alt;
                     Tag image = new Tag("img");
-                    this.SetDimensions(mediaItem, shellOptions, image);
+                    SetDimensions(mediaItem, shellOptions, image); // Update SetDimensions to accept MediaUrlBuilderOptions
                     image.Add("Src", MediaManager.GetMediaUrl(mediaItem, shellOptions));
                     image.Add("Alt", StringUtil.EscapeQuote(text));
                     image.Add("_languageInserted", "true");
@@ -69,11 +69,8 @@ namespace TinyMCERTE.Commands {
                 SheerResponse.Eval("TinyMCEEditor.InsertImage.scCancel()");
         }
 
-        /// <summary>Gets the dimensions.</summary>
-        /// <param name="item">The item.</param>
-        /// <param name="options">The options.</param>
-        /// <param name="image">The image.</param>
-        private void SetDimensions(MediaItem item, MediaUrlOptions options, Tag image) {
+        // Update SetDimensions to accept MediaUrlBuilderOptions instead of MediaUrlOptions
+        private void SetDimensions(MediaItem item, MediaUrlBuilderOptions options, Tag image) {
             Assert.ArgumentNotNull((object)item, ExtensionMethods.nameof(() => item));
             Assert.ArgumentNotNull((object)options, ExtensionMethods.nameof(() => options));
             Assert.ArgumentNotNull((object)image, ExtensionMethods.nameof(() => image));
