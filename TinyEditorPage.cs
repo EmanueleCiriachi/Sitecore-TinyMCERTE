@@ -79,6 +79,9 @@ namespace TinyMCERTE {
             var siteContext = SiteContext.GetSite(siteInfo.Name);
 
             SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["FieldText"]);
+            if (string.IsNullOrEmpty(richTextContentArgs.Content)) {
+                richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["EditorValue"]);
+            }
             richTextContentArgs.Content = WebEditUtil.RepairLinks(richTextContentArgs.Content);
 
             richTextContentArgs.Content = DynamicLinkExpander.ProcessHtml(richTextContentArgs.Content, siteContext);
