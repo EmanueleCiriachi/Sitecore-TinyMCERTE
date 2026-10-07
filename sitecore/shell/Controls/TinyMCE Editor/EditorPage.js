@@ -32,7 +32,14 @@ EditorPage = function () {
         content_css: CSSPath,
         init_instance_callback: function (editor) {
           eval(EditorInitCallback);
-        }
+        },
+        
+        verify_html: false,
+        cleanup: false,
+        valid_children: '+a[div]',
+        extended_valid_elements: 'a[*],div[*],p[*]',
+        forced_root_block: false,
+        entity_encoding: 'raw'
     });
 
     window.tinyeditorref2 = tinymce;

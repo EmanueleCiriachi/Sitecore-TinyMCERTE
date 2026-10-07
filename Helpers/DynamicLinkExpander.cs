@@ -1,6 +1,7 @@
 ﻿using Sitecore.Common;
 using Sitecore.Data;
 using Sitecore.Data.Items;
+using Sitecore.Globalization;
 using Sitecore.Links;
 using Sitecore.Links.UrlBuilders;
 using Sitecore.Resources.Media;
@@ -12,18 +13,37 @@ using System.Web;
 namespace TinyMCERTE.Helpers {
     public class DynamicLinkExpander {
 
-        public static string ExpandURL(Guid itemId, SiteContext siteContext) {
+        /// <summary>
+        /// Expands a dynamic link into its friendly URL, embedding the given item language
+        /// (e.g. the language of the item currently being edited) so the resulting path
+        /// is prefixed with the correct locale (e.g. /en-gb/training/special-offers).
+        /// </summary>
+        /// <param name="itemId">The target item ID.</param>
+        /// <param name="siteContext">The site context to resolve the URL against.</param>
+        /// <param name="language">
+        /// The language to embed and to fetch the target item in. If <c>null</c>, falls back
+        /// to not embedding a language (previous behavior).
+        /// </param>
+        public static string ExpandURL(Guid itemId, SiteContext siteContext, Language language = null) {
             using (new SiteContextSwitcher(siteContext)) {
                 // Get the context database (usually "master" or "web")  
                 Database database = siteContext.Database;
 
-                // Retrieve the item by ID  
-                Item item = database.GetItem(itemId.ToID());
+                // Retrieve the item by ID, in the requested language if one was supplied  
+                Item item = language != null
+                    ? database.GetItem(itemId.ToID(), language)
+                    : database.GetItem(itemId.ToID());
 
                 var opts = LinkManager.GetDefaultUrlBuilderOptions();
                 opts.SiteResolving = true;
-                opts.LanguageEmbedding = LanguageEmbedding.Never;   // tweak as needed
                 opts.AlwaysIncludeServerUrl = false;              // for absolute URLs
+
+                if (language != null) {
+                    opts.Language = language;
+                    opts.LanguageEmbedding = LanguageEmbedding.Always;
+                } else {
+                    opts.LanguageEmbedding = LanguageEmbedding.Never;   // previous fallback behavior
+                }
 
                 var url = LinkManager.GetItemUrl(item, opts);
 
@@ -53,7 +73,7 @@ namespace TinyMCERTE.Helpers {
             return url;
         }
 
-        public static string ProcessHtml(string html, SiteContext siteContext) {
+        public static string ProcessHtml(string html, SiteContext siteContext, Language language = null) {
             if (string.IsNullOrEmpty(html))
                 return html;
 
@@ -87,7 +107,7 @@ namespace TinyMCERTE.Helpers {
                         string cleanId = idParam.Trim('{', '}');
 
                         if (Guid.TryParse(cleanId, out Guid itemId)) {
-                            string expandedUrl = ExpandURL(itemId, siteContext);
+                            string expandedUrl = ExpandURL(itemId, siteContext, language);
                             return $"href={quote}{expandedUrl}{quote}";
                         }
                     }

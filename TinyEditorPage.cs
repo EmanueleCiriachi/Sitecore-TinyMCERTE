@@ -1,6 +1,7 @@
 ﻿using Sitecore;
 using Sitecore.Configuration;
 using Sitecore.Diagnostics;
+using Sitecore.Globalization;
 using Sitecore.Pipelines;
 using Sitecore.Resources.Media;
 using Sitecore.Security.Accounts;
@@ -78,13 +79,17 @@ namespace TinyMCERTE {
             SiteInfo siteInfo = SiteContextFactory.Sites.Where(s => s.Name == "globalknowledge.com").FirstOrDefault();
             var siteContext = SiteContext.GetSite(siteInfo.Name);
 
+            // The item language being edited is passed to this page as the "la" query string
+            // parameter (see TinyMCEEditorUrl). Use it so expanded links get the correct locale.
+            Language.TryParse(WebUtil.GetQueryString("la"), out Language itemLanguage);
+
             SaveRichTextContentArgs richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["FieldText"]);
             if (string.IsNullOrEmpty(richTextContentArgs.Content)) {
                 richTextContentArgs = new SaveRichTextContentArgs(this.Request.Form["EditorValue"]);
             }
             richTextContentArgs.Content = WebEditUtil.RepairLinks(richTextContentArgs.Content);
 
-            richTextContentArgs.Content = DynamicLinkExpander.ProcessHtml(richTextContentArgs.Content, siteContext);
+            richTextContentArgs.Content = DynamicLinkExpander.ProcessHtml(richTextContentArgs.Content, siteContext, itemLanguage);
 
             using (new LongRunningOperationWatcher(250, "saveRichTextContent", new string[0]))
                 CorePipeline.Run("saveRichTextContent", (PipelineArgs)richTextContentArgs);
